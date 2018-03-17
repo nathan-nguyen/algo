@@ -1,0 +1,44 @@
+Arrays.sort(points, new Comparator<int[]>(){
+	@Override public int compare(int[] o1, int[] o2){
+		return Float.compare(o1[0],o2[0]);
+	}
+});
+
+--------------------
+
+for (int key : frequencyMap.keySet()) {
+	int frequency = frequencyMap.get(key);
+	if (bucket[frequency] == null) {
+		bucket[frequency] = new ArrayList<>();
+	}
+	bucket[frequency].add(key);
+}
+
+--------------------
+
+public int searchInsert(int[] A, int target) {
+	int low = 0, high = A.length-1;
+	while(low<=high){
+		int mid = (low+high)/2;
+		if(A[mid] == target) return mid;
+		else if(A[mid] > target) high = mid-1;
+		else low = mid+1;
+	}
+	return low;
+}
+
+--------------------
+
+PriorityQueue<Integer> pq = new PriorityQueue<>();
+for (int i = 0; i < nums.length; ++i){
+	pq.offer(nums[i]);
+	if (pq.size() > k) pq.poll();
+}
+return pq.peek();
+
+--------------------
+
+// String - REGEX match
+int matches = (password.matches(".*[0-9].*")? 0 : 1) + (password.matches(".*[a-z].*") ? 0 : 1) + (password.matches(".*[A-Z].*") ? 0 : 1) + (password.matches(".*[!@#$%^&*()-+].*") ? 0 : 1);
+
+--------------------
