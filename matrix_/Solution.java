@@ -10,7 +10,6 @@ public class Solution {
 
 	int[] id;
 	boolean[] robot;
-	boolean[] remove;
 	int[] sz;
 	private void solve(){
 		Scanner in = new Scanner(System.in);
