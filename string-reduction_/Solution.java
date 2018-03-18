@@ -9,7 +9,7 @@ public class Solution {
 		else if (s.charAt(i) == 'b') ++b;
 		else ++c;
 	}
-	if (a + b == 0 || b + c == 0 || c + a == 0) return a + b + c;
+	if ((a + b) * (b + c) * (c + a) == 0) return a + b + c;
 	return (a % 2 == b % 2 && b % 2 == c % 2) ? 2 : 1;
     }
 
