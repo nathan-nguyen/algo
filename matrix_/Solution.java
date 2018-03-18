@@ -10,6 +10,7 @@ public class Solution {
 
 	int[] id;
 	boolean[] robot;
+	boolean[] remove;
 	int[] sz;
 	private void solve(){
 		Scanner in = new Scanner(System.in);
@@ -34,7 +35,7 @@ public class Solution {
 
 		Arrays.sort(r, new Comparator<int[]>(){
 			@Override public int compare(int[] o1, int[] o2){
-				return Double.compare(o1[2], o2[2]);
+				return -Double.compare(o1[2], o2[2]);
 			}
 		});
 
@@ -47,27 +48,25 @@ public class Solution {
 	}
 
 	private int buildRoad(int l, int r, int w){
-		boolean add = robot[l] || robot[r];
-
+		int add = 0;
 		while (l != id[l]) l = id[l];
 		while (r != id[r]) r = id[r];
 
 		if (l == r) return 0;
 
+		if (robot[l] && robot[r]) add = w;
+
 		if (sz[l] <= sz[r]) {
 			id[l] = r;
 			sz[r] += sz[l];
+			robot[r] = robot[r] || robot[l];
 		}
 		else {
 			id[r] = l;
 			sz[l] += sz[r];
+			robot[l] = robot[l] || robot[r];
 		}
 		
-		if (add) {
-			robot[l] = false;
-			robot[r] = false;
-			return w;
-		}
-		return 0;
+		return add;
 	}
 }
