@@ -15,8 +15,8 @@ public class Solution {
 
 		Arrays.sort(data, new Comparator<int[]>(){
 			@Override public int compare(int[] o1, int[] o2){
-				if (o1[0] == o2[0]) return Float.compare(o1[1], o2[1]);
-				return Float.compare(o1[0],o2[0]);
+				if (o1[0] == o2[0]) return Double.compare(o1[1], o2[1]);
+				return Double.compare(o1[0],o2[0]);
 			}
 		});
 
