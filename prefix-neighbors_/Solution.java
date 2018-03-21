@@ -50,11 +50,9 @@ public class Solution {
 		int total = 0;
 		for (int i = 0; i < 26; ++i){
 			if (root.child[i] == null) continue;
-			int[]  result = dfs(root.child[i]);
-			System.out.println((char)(i + 'A') + " " + result[0] + " " +  result[1]);
-			total += Math.max(result[0], result[1]);	
+			dfs(root.child[i], root);
 		}
-		System.out.println(total);
+		System.out.println(root.notChosen);
 	}
 
 	private int calVal(String s){
@@ -63,22 +61,16 @@ public class Solution {
 		return result;
 	}
 
-	private int[] dfs(Node n){
+	private void dfs(Node n, Node parent){
 		n.chosen = n.val;
 
 		for (int i = 0; i < 26; ++i) {
 			if (n.child[i] == null) continue;
-			int[] result = dfs(n.child[i]);
 
-			if (n.val > 0) {
-				n.chosen += result[1];
-				n.notChosen += Math.max(result[1], result[0]);
-			}
-			else {
-				n.chosen += result[0];
-				n.notChosen += result[1];
-			}
+			if (n.val > 0) dfs(n.child[i], n);
+			else dfs(n.child[i], parent);
 		}
-		return new int[]{n.chosen, n.notChosen};
+		parent.chosen += n.notChosen;
+		parent.notChosen += Math.max(n.chosen, n.notChosen);
 	}
 }
