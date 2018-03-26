@@ -12,9 +12,12 @@ x4 = xc + yd  ;  y4 = yc - xd;    // Fourth corner
 // Line equation passing (x1, y1) and (x2, y2)
 (y2 - y1) * x + (x1 - x2) * y = x1 * y2 - x2 * y1
 
+Example: Hackerrank: a-circle-and-a-square
+
 // -------------------------------------------------------------------------------- //
 
 2. Removing vertices from graph
+
 For the problem of removing one-by-one vertex from graph, we can solve by reversing the order of removing. That means insteading of removing, we start with empty graph and keep adding one-by-one vertex.
 
 Example: Codeforces 295B
