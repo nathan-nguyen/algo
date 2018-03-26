@@ -14,3 +14,20 @@ x4 = xc + yd  ;  y4 = yc - xd;    // Fourth corner
 
 // -------------------------------------------------------------------------------- //
 
+2. Removing vertices from graph
+For the problem of removing one-by-one vertex from graph, we can solve by reversing the order of removing. That means insteading of removing, we start with empty graph and keep adding one-by-one vertex.
+
+Example: Codeforces 295B
+
+// -------------------------------------------------------------------------------- //
+
+3. Weighted Quick Union
+
+- Union find
+
+- Detect cycle in undirected graph
+
+- Easy implementation
+
+// -------------------------------------------------------------------------------- //
+
