@@ -5,6 +5,7 @@ import java.util.Collections;
 public class Solution {
 	public static void main(String[] args){
 		Solution solution = new Solution();
+//		System.out.println((long)Math.sqrt(999999999999999999L));
 		solution.solve();
 	}
 
@@ -29,6 +30,7 @@ public class Solution {
 			long sl = (long) Math.sqrt(L);
 			long sr = (long) Math.sqrt(R);
 			sl = ((long) sl * sl == L) ? sl - 1 : sl;
+			sr = ((long) sr * sr > R) ? sr - 1 : sr;
 
 			System.out.println(rp - lp + sr - sl);
 		}
@@ -38,9 +40,12 @@ public class Solution {
 		ArrayList<Long> l = new ArrayList<>();
 
 		for (int i = 2; i <= 1e6; ++i){
-			for (long j = (long) i * i * i; j > 0 && j <= 1e18; j *= i) {
-				long t = (long) Math.sqrt(j);
-				if (t * t != j) l.add(j);
+			int t = (int) Math.sqrt(i);
+			if (t * t == i) continue;
+
+			for (long j = (long) i * i * i; j <= 1e18; j = j * i * i) {
+				l.add(j);
+				if (Long.MAX_VALUE / j < (long) i * i) break;
 			}
 		}
 		Collections.sort(l);
