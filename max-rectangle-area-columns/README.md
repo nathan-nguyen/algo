@@ -16,9 +16,9 @@ Input 01:
 
 6
 
-<br/>
-
 1 3 6 4 5 2
+
+<br/>
 
 Output 01:
 
@@ -28,7 +28,7 @@ Output 01:
 
 ## Solution
 
-Approach from both sides. Each time, calculate the local max area and remove the smaller end.
+**Approach from both sides. Each time, calculate the local max area and remove the smaller end.**
 
 <br/>
 
