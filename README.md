@@ -41,3 +41,13 @@ Example: Codeforces 295B
 
 // -------------------------------------------------------------------------------- //
 
+4. Array of n distinct elements from 1 to n
+
+- This problem might be converted to linked list problem.
+
+- The value of 1 element is the index of the next element.
+
+Example: Leetcode find-the-duplicate-number
+
+// -------------------------------------------------------------------------------- //
+
