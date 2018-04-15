@@ -1,4 +1,6 @@
 Solve and update the following problems (Rank by priority):
 
+How to get result 7 with target = 5 in race-car
+Finish race-car
 Read leetcode solution for first-missing-positive
 
