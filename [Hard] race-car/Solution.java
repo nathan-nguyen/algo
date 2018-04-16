@@ -1,6 +1,7 @@
 class Solution {
     public int racecar(int target) {
         int[] step = new int[10001];
+	boolean[] forward = new boolean[10001];
 	
 	step[1] = 1;
 	for (int i = 3; i < 10001; i = i * 2 + 1) step[i] = step[i / 2] + 1;
@@ -14,10 +15,13 @@ class Solution {
 			continue;
 		}
 
+		step[i] = step[last] + (forward[i-last] ? 1 : 2) + step[i-last];
 		if (step[last * 2 + 1 - i] > 0) {
-			step[i] = Math.min(step[last] + 2 + step[i-last], 2 + step[last] + step[last * 2 + 1 - i]);
+			step[i] = Math.min(step[i], 2 + step[last] + step[last * 2 + 1 - i]);
+			if (2 + step[last] + step[last * 2 + 1 - i] <= step[last] + 2 + step[i-last]){
+				forward[i] = true;
+			}
 		}
-		else step[i] = step[last] + 2 + step[i-last];
 	}
 	return step[target];
     }
