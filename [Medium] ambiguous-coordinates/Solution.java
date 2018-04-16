@@ -29,24 +29,18 @@ class Solution {
 		
 		for (int i = 0; i < s.length() - 1; ++i){
 			String first = s.substring(0, i+1);
+
+			if (first.length() > 1 && first.charAt(0) == '0') break;
+
 			String second = s.substring(i+1, s.length());
 
-			String fs = trimZero(Integer.parseInt(first) + "." + second);
-			String value = first + "." + second;
+			if (second.charAt(second.length() - 1) == '0') break;
 
-			if (fs.equals(value)) l.add(value);
-
+			l.add(first + "." + second);
 		}
 
 		if (String.valueOf(Integer.parseInt(s)).equals(s)) l.add(s);
 
 		return l;
-	}
-
-	private String trimZero(String s){
-		for (int i = s.length() - 1; i >= 0; --i){
-			if (s.charAt(i) != '0') return s.substring(0, i + 1);
-		}
-		return s;
 	}
 }
