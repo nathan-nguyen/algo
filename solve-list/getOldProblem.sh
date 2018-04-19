@@ -1,6 +1,7 @@
 #!/bin/bash
 
 User=$1
+User2=$2
 
 cp ${User}.userlist tmp
 
@@ -14,8 +15,11 @@ NewFile=`wc tmp2 | awk -F' ' '{print $1}'`
 echo "All problems: ${Original}"
 echo "New problems: ${NewFile}"
 
-diff tmp tmp2 | grep "<"
+diff tmp tmp2 | grep "<" | cut -c3- > tmp1
+
+diff tmp1 ${User2}.userlist | grep "<" | cut -c3-
 
 rm -f tmp tmp1 tmp2
 
 exit 0
+
