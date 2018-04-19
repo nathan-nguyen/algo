@@ -1,4 +1,4 @@
 Solve and update the following problems (Rank by priority):
 
-961D
+Read editorial for 961E_
 

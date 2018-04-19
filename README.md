@@ -51,3 +51,15 @@ Example: Leetcode find-the-duplicate-number
 
 // -------------------------------------------------------------------------------- //
 
+5. Binary Indexed Tree (BIT) - Fenwick tree
+
+- Easy implementation
+
+- [0 - n] : Node 0 is a dummy node
+
+- get: index++; --> while index > 0 --> index -= index & (-index);
+
+- update: index++; --> while index <=n --> index += index & (-index);
+
+// -------------------------------------------------------------------------------- //
+
