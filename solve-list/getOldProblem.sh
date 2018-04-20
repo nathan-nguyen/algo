@@ -1,7 +1,10 @@
 #!/bin/bash
 
-User=$1
-User2=$2
+User=`echo $1 | sed 's/.userlist//'`
+User2=`echo $2 | sed 's/.userlist//'`
+
+./updateStatus.sh $User
+./updateStatus.sh $User2
 
 cp ${User}.userlist tmp
 
