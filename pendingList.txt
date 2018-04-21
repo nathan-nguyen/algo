@@ -1,5 +1,6 @@
 Solve and update the following problems (Rank by priority):
 
-Finish race-car
+strange-printer - editorial - submit solution
+race-car - editorial - submit solution
 Read leetcode solution for first-missing-positive
 
