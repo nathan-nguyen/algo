@@ -1,6 +1,7 @@
 Solve and update the following problems (Rank by priority):
 
-longest-substring-with-at-least-k-repeating-characters - editorial - template - submit solution
+(**) Understand Rectangle Area editorial
+(*) longest-substring-with-at-least-k-repeating-characters - editorial - template - submit solution
 strange-printer - editorial - submit solution
 race-car - editorial - submit solution
 Read leetcode solution for first-missing-positive
