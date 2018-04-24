@@ -1,7 +1,8 @@
 Solve and update the following problems (Rank by priority):
 
-(**) Understand Rectangle Area editorial
 (*) longest-substring-with-at-least-k-repeating-characters - editorial - template - submit solution
+can-i-win - editorial
+couples-holding-hands - editorial
 strange-printer - editorial - submit solution
 race-car - editorial - submit solution
 Read leetcode solution for first-missing-positive
