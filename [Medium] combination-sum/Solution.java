@@ -15,8 +15,6 @@ class Solution {
                         return l;
                 }
                 
-		if (target < c[index]) return l;
-
 		for (int i = index; i < c.length && target >= c[i]; ++i){
 			for (List cl : combinationSum(c, target - c[i], i)){
 				cl.add(0, c[i]);
