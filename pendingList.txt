@@ -1,4 +1,5 @@
 Solve and update the following problems (Rank by priority):
 
+Added solution java code for 963B
 Read editorial for 961E_
 
