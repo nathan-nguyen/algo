@@ -31,9 +31,7 @@ public class Solution {
 
 		int len = 0;
 		for (int i = 1; i < lps.length; ++i){
-			while (p.charAt(len) != p.charAt(i) && len > 0) {
-				len = lps[len - 1];
-			}
+			while (p.charAt(len) != p.charAt(i) && len > 0) len = lps[len - 1];
 			if (p.charAt(len) == p.charAt(i)) lps[i] = ++len;
 			else lps[i] = 0;
 		}
