@@ -1,7 +1,7 @@
 Solve and update the following problems (Rank by priority):
 
 (*) longest-substring-with-at-least-k-repeating-characters - editorial - template - submit solution
-number-of-islands - editorial
+number-of-islands - update with O(n) solution
 can-i-win - editorial - submit solution
 couples-holding-hands - editorial - submit solution
 strange-printer - editorial - submit solution
