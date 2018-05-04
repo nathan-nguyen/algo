@@ -43,3 +43,13 @@ return pq.peek();
 int matches = (password.matches(".*[0-9].*")? 0 : 1) + (password.matches(".*[a-z].*") ? 0 : 1) + (password.matches(".*[A-Z].*") ? 0 : 1) + (password.matches(".*[!@#$%^&*()-+].*") ? 0 : 1);
 
 --------------------
+
+ArrayList<Integer> result = new ArrayList<>();
+int[] resultArray = result.stream().mapToInt(i->i).toArray();
+
+--------------------
+
+Arrays.copyOfRange
+
+--------------------
+
