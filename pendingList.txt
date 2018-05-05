@@ -3,6 +3,7 @@ Solve and update the following problems (Rank by priority):
 (*) longest-substring-with-at-least-k-repeating-characters - editorial - template - submit solution
 number-of-islands - update with O(n) solution
 bitwise-and-of-numbers-range - update better solution
+find cycle in directed graph - update README.md - codeforces - leetcode - hackerrank
 convert-sorted-list-to-binary-search-tree - update better solution
 can-i-win - editorial - submit solution
 couples-holding-hands - editorial - submit solution
