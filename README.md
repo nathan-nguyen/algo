@@ -63,3 +63,15 @@ Example: Leetcode find-the-duplicate-number
 
 // -------------------------------------------------------------------------------- //
 
+6. Find cycle in directed graph
+
+- Keep a stack
+
+- If vertex is in stack -> cycle
+
+- else stack.push(vertex); --> process vertex's children --> Remove vertex from stack: stack.pop();
+
+// -------------------------------------------------------------------------------- //
+
+
+
