@@ -2,7 +2,9 @@ Solve and update the following problems (Rank by priority):
 
 (*) longest-substring-with-at-least-k-repeating-characters - editorial - template - submit solution
 Distinct Subsequences - think about init dp array
-number-of-islands - update with O(n) solution
+3sum-closest_ - submit solution
+basic-calculator - parseTree - submit solution
+basic-calculator-ii - parseTree - submit solution
 bitwise-and-of-numbers-range - update better solution
 find cycle in directed graph - update README.md - codeforces - leetcode - hackerrank
 matchsticks-to-square_
