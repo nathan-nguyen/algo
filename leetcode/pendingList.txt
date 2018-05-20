@@ -5,7 +5,6 @@ Distinct Subsequences - think about init dp array
 3sum-closest_ - submit solution
 basic-calculator - parseTree - submit solution
 basic-calculator-ii - parseTree - submit solution
-bitwise-and-of-numbers-range - update better solution
 find cycle in directed graph - update README.md - codeforces - leetcode - hackerrank
 matchsticks-to-square_
 convert-sorted-list-to-binary-search-tree - update better solution
