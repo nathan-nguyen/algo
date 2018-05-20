@@ -1,0 +1,5 @@
+# remeber-list
+
+bitwise-and-of-numbers-range - leetcode
+searching-for-patterns-set-2-kmp-algorithm - geeksforgeeks
+
