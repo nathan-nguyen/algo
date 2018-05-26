@@ -2,21 +2,28 @@ import java.util.Scanner;
 import java.util.HashMap;
 
 public class Solution {
-	public static void main (String[] args) {
-		Scanner in = new Scanner(System.in);
-		int n = in.nextInt();
-		HashMap<String, Integer> hm = new HashMap<>();
+	public static void main(String[] args){
+		Solution solution = new Solution();
+		solution.solve();
+	}
 
-		while (n-- > 0){
-			String str = in.next();
-			Integer result = hm.get(str);
-			if (result == null) {
-				hm.put(str, 0);
+	private void solve(){
+		Scanner in = new Scanner(System.in);
+
+		HashMap<String, Integer> map = new HashMap<>();
+
+		int n = in.nextInt();
+
+		while (n -- > 0){
+			String s = in.next();
+			if (!map.containsKey(s)) {
+				map.put(s, 1);
 				System.out.println("OK");
 			}
 			else {
-				hm.put(str, ++result);
-				System.out.println(str + result);
+				int v = map.get(s);
+				System.out.println(s + v);
+				map.put(s, v + 1);
 			}
 		}
 	}
