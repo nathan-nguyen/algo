@@ -2,4 +2,5 @@
 
 leetcode-weekly-contest-4
 leetcode-weekly-contest-5
+leetcode-weekly-contest-6
 
