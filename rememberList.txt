@@ -3,3 +3,7 @@
 bitwise-and-of-numbers-range - leetcode
 searching-for-patterns-set-2-kmp-algorithm - geeksforgeeks
 
+convert-sorted-list-to-binary-search-tree - leetcode
+--> Easy version: Array to binary seach tree
+--> Less easy version: LinkedList to binary search tree
+
