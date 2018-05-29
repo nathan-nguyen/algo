@@ -3,4 +3,5 @@
 Codeforces Round #481 (Div. 3)
 Codeforces Round #479 (Div. 3)
 Codeforces Beta Round #6 (Div. 2 Only)
+Codeforces Beta Round #9 (Div. 2 Only)
 
