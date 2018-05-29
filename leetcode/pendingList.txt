@@ -1,7 +1,9 @@
 Solve and update the following problems (Rank by priority):
 
 (*) longest-substring-with-at-least-k-repeating-characters - editorial - template - submit solution
+wiggle-subsequence_
 trapping-rain-water-ii_
+word-break_
 Distinct Subsequences - think about init dp array
 3sum-closest_ - submit solution
 contains-duplicate-iii - O(n) solution
