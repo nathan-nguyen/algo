@@ -57,9 +57,9 @@ Example: Leetcode find-the-duplicate-number
 
 - [0 - n] : Node 0 is a dummy node
 
-- get: index++; --> while index > 0 --> index -= index & (-index);
+- get(index): index++; --> while index > 0 --> index -= index & (-index);
 
-- update: index++; --> while index <=n --> index += index & (-index);
+- update(index, increasingVal): index++; --> while index <=n --> index += index & (-index);
 
 // -------------------------------------------------------------------------------- //
 
