@@ -4,8 +4,10 @@ class Solution {
 
 		for (String s: words){
 			if (!map.containsKey(s)) map.put(s, 1);
-			int v = map.get(s);
-			map.put(s, v + 1);
+			else {
+				int v = map.get(s);
+				map.put(s, v + 1);
+			}
 		}
 
 		PriorityQueue<String> pq = new PriorityQueue((u, v) -> {
