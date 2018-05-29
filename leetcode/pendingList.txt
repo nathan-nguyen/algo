@@ -7,6 +7,7 @@ word-break_
 Distinct Subsequences - think about init dp array
 3sum-closest_ - submit solution
 contains-duplicate-iii - O(n) solution
+top-k-frequent-elements_ - O(n) solution
 basic-calculator - parseTree - submit solution
 basic-calculator-ii - parseTree - submit solution
 matchsticks-to-square_
