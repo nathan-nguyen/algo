@@ -16,5 +16,4 @@ convert-sorted-list-to-binary-search-tree - update better solution
 can-i-win - editorial - submit solution
 couples-holding-hands - editorial - submit solution
 strange-printer - editorial - submit solution
-race-car - editorial - submit solution
 
