@@ -17,24 +17,29 @@
  */
 class Solution {
 	public TreeNode sortedListToBST(ListNode head) {
-		List<Integer> l = new ArrayList<>();
-		while (head != null){
-			l.add(head.val);
-			head = head.next;
+		if (head == null) return null;
+		if (head.next == null) return new TreeNode(head.val);
+
+		ListNode prev = null;
+		ListNode cur = head;
+		ListNode next = head;
+
+		while(next != null && next.next != null){
+			prev = cur;
+			cur = cur.next;
+			next = next.next.next;
 		}
 
-		return buildTree(l, 0, l.size() - 1);
-	}
+		// Reuse variable next
+		next = cur.next;
+		if (prev != null) prev.next = null;
+		cur.next = null;
 
-	private TreeNode buildTree(List<Integer> l, int from, int to){
-		if (from == to) return new TreeNode(l.get(from));
-		if (from > to) return null;
+		TreeNode root = new TreeNode(cur.val);
+		root.left = sortedListToBST(head);
+		root.right = sortedListToBST(next);
 
-		int mid = (from + to) / 2;
-		TreeNode root = new TreeNode(l.get(mid));
-
-		root.left = buildTree(l, from , mid - 1);
-		root.right = buildTree(l, mid + 1, to);
 		return root;
 	}
+
 }

@@ -81,3 +81,20 @@ Example: Leetcode find-the-duplicate-number
 
 // -------------------------------------------------------------------------------- //
 
+8. LinkedList
+
+ListNode cur = head;
+ListNode next = head;
+
+while(next != null && next.next != null){
+	cur = cur.next;
+	next = next.next.next;
+}
+
+2: 0-1-null	-> 0-0|1-null
+3: 0-1-2-null	-> 0-0|1-2
+4: 0-1-2-3-null	-> 0-0|1-2|2-null
+
+- Dont hesitate to use extract variables to simplize the problem
+
+// -------------------------------------------------------------------------------- //
