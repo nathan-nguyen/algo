@@ -83,6 +83,6 @@ Example: Leetcode find-the-duplicate-number
 
 8. LinkedList
 
-- Dont hesitate to use extract variables to simplize the problem
+- Dont hesitate to use extra variables to simplize the problem
 
 // -------------------------------------------------------------------------------- //
