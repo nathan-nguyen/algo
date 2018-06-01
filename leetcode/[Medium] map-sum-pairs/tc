@@ -1,0 +1,7 @@
+["MapSum", "insert", "sum", "insert", "sum","insert","sum"]
+[[], ["apple",3], ["ap"], ["app",2], ["ap"],["orange",4],[""]]
+
+-->
+
+[null,null,3,null,5,null,9]
+
