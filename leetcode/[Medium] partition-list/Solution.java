@@ -11,10 +11,8 @@ class Solution {
 		if (head == null) return null;
 
 		ListNode cur = head;
-		ListNode small = null;
-		ListNode bS = null;
-		ListNode greater = null;
-		ListNode beginGreater = null;
+		ListNode small = null, bS = null;
+		ListNode big = null, bB = null;
 
 		while (cur != null){
 			if (cur.val < x){
@@ -28,22 +26,21 @@ class Solution {
 				}
 			}
 			else {
-				if (greater == null) {
-					greater = cur;
-					beginGreater = greater;
+				if (big == null) {
+					big = cur;
+					bB = big;
 				}
 				else {
-					greater.next = cur;
-					greater = greater.next;
+					big.next = cur;
+					big = big.next;
 				}
 			}
 			cur = cur.next;
-			if (small != null) small.next = null;
-                        if (greater != null) greater.next = null;
 		}
 
-		if (small == null) return beginGreater;
-		else small.next = beginGreater;
+		if (big != null) big.next = null;
+		if (small == null) return bB;
+		else small.next = bB;
 		return bS;
 	}
 }
