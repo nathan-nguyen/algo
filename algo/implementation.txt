@@ -1,0 +1,4 @@
+# implementation
+
+longest-univalue-path: See two different ways of implementaion. The shorter solution seems to be better.
+
