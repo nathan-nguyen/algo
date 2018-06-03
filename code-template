@@ -68,3 +68,9 @@ while(next != null && next.next != null){
 
 --------------------
 
+Flip bit at poition k
+
+n ^ (1 << k)
+
+--------------------
+
