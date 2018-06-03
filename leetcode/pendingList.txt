@@ -14,6 +14,7 @@ top-k-frequent-elements_ - O(n) solution
 basic-calculator - parseTree - submit solution
 basic-calculator-ii - parseTree - submit solution
 matchsticks-to-square_
+gray-code_ - 3 lines solution
 best-time-to-buy-and-sell-stock-with-transaction-fee_
 can-i-win - editorial - submit solution
 couples-holding-hands - editorial - submit solution
