@@ -8,6 +8,7 @@ Distinct Subsequences - think about init dp array
 3sum-closest_ - submit solution
 contains-duplicate-iii - O(n) solution
 majority-element-ii_
+unique-letter-string_
 top-k-frequent-elements_ - O(n) solution
 basic-calculator - parseTree - submit solution
 basic-calculator-ii - parseTree - submit solution
