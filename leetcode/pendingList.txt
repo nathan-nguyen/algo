@@ -5,6 +5,7 @@ wiggle-subsequence_
 trapping-rain-water-ii_
 word-break_
 Distinct Subsequences - think about init dp array
+network-delay-time - Using Dijkstra
 3sum-closest_ - submit solution
 contains-duplicate-iii - O(n) solution
 majority-element-ii_
