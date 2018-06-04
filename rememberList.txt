@@ -12,3 +12,6 @@ word-break - leetcode
 
 network-delay-time - leetcode
 
+rectangle-area - leetcode
+
+
