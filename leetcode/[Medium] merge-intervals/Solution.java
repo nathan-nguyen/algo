@@ -12,10 +12,7 @@ class Solution {
 		List<Interval> result = new ArrayList<>();
 		if (intervals.size() == 0) return result;
 
-		intervals.sort((u, v) -> {
-			if (u.start == v.start) return u.end - v.end;
-			else return u.start - v.start;
-		});
+		intervals.sort((u, v) -> u.start - v.start);
 
 		int s = intervals.get(0).start;
 		int e = intervals.get(0).end;
