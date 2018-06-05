@@ -1,6 +1,7 @@
 Solve and update the following problems (Rank by priority):
 
-(*) longest-substring-with-at-least-k-repeating-characters - editorial - template - submit solution
+partition-labels_
+longest-substring-with-at-least-k-repeating-characters_ - editorial - template
 wiggle-subsequence_
 trapping-rain-water-ii_
 word-break_
