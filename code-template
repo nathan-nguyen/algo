@@ -1,9 +1,29 @@
+// Classic way
+
 Arrays.sort(points, new Comparator<int[]>(){
 	@Override public int compare(int[] o1, int[] o2){
 		// Convert to (long) to avoid overflow
 		if (o1[0] == o2[0]) return 0;
 		return (o1[0] > o2[0]) ? 1 : -1;
 	}
+});
+
+// In Java 8
+
+Integer[] a = new Integer[100];
+int[] condition = new int[100];
+
+Arrays.sort(a, (x, y) -> condition[x] - condition[y]);
+
+// Primitive type cannot be sorted this way, need to convert to Object
+
+int[][] a = new int[100][2];
+
+Arrays.sort(a, (x, y) -> x[0] - y[0]);
+
+Arrays.sort(a, (x, y) -> {
+	if (x[0] == y[0]) return x[1] - y[1];
+	else return x[0] - y[0];
 });
 
 --------------------
