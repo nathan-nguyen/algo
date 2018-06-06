@@ -4,8 +4,8 @@ public class Generator {
 		char[][] board = new char[9][9];
 
 
-		firstCase(board);
-		//secondCase(board);
+//		firstCase(board);
+		secondCase(board);
 		solution.solveSudoku(board);
 
 		for (int i = 0; i < 9; ++i){

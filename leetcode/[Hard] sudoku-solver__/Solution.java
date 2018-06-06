@@ -3,41 +3,36 @@ import java.util.HashMap;
 
 class Solution {
 	public void solveSudoku(char[][] board) {
-		HashMap<String, HashSet<Integer>> map = new HashMap<>();
-
-		for (int i = 0; i < 9; ++i){
-			map.put("r" + i, createDefaultHashSet());
-			map.put("c" + i, createDefaultHashSet());
-			for (int j = 0; j < 9; ++j) {
-				if (i < 3 && j < 3) map.put("gr" + i + "_" + j, createDefaultHashSet());
-				map.put(i + "_" + j, createDefaultHashSet());
-			}
-		}
-
+		boolean[][] r = new boolean[9][10];
+		boolean[][] c = new boolean[9][10];
+		boolean[][][] gr = new boolean[3][3][10];
+		boolean[][][] map = new boolean[9][9][10];
+		
 		for (int i = 0; i < 9; ++i){
 			for (int j = 0; j < 9; ++j){
-				if (board[i][j] != '.') remove(i, j, map, board[i][j] - '0');
+				if (board[i][j] != '.') remove(i, j, r, c, gr, map, board[i][j] - '0');
 			}
 		}
 	
-		solve(0, board, map);	
+		solve(0, board, r, c, gr, map);	
 	}
 
-	private boolean solve(int start, char[][] board, HashMap<String, HashSet<Integer>> map){
+	private boolean solve(int start, char[][] board, boolean[][] r, boolean[][] c, boolean[][][] gr, boolean[][][] map){
+		if (start == 81) return true;
+
 		for (int i = start; i < 81; ++i){
 			int x = i / 9;
 			int y = i % 9;
 			if (board[x][y] != '.') continue;
-			if (!isValid(x, y, map)) continue;
 
 			for (int k = 1; k <= 9; ++k){
-				if (!contains(x, y, map, k)) continue;
+				if (isRemoved(x, y, r, c, gr, map, k)) continue;
+
 				board[x][y] = (char)('0' + k);
-				if (i == 80) return true;
 				
-				remove(x, y, map, k);
-				if (solve(i + 1, board, map)) return true;
-				add(x, y, map, k);
+				remove(x, y, r, c, gr, map, k);
+				if (solve(i + 1, board, r, c, gr, map)) return true;
+				add(x, y, r, c, gr, map, k);
 				board[x][y] = '.';
 			}
 			return false;
@@ -45,31 +40,22 @@ class Solution {
 		return true;
 	}
 
-	private void add(int x, int y, HashMap<String, HashSet<Integer>> map, int val){
-		map.get("r" + x).add(val);
-		map.get("c" + y).add(val);
-		map.get("gr" + (x / 3) + "_" + (y / 3)).add(val);
-		map.get(x + "_" + y).add(val);
+	private void add(int x, int y, boolean[][] row, boolean[][] col, boolean[][][] gr, boolean[][][] map, int val){
+		row[x][val] = false;
+		col[y][val] = false;
+		gr[x/3][y/3][val] = false;
+		map[x][y][val] = false;
 	}
 
-	private void remove(int x, int y, HashMap<String, HashSet<Integer>> map, int val){
-                map.get("r" + x).remove(val);
-                map.get("c" + y).remove(val);
-                map.get("gr" + (x / 3) + "_" + (y / 3)).remove(val); 
-                map.get(x + "_" + y).remove(val);
+	private void remove(int x, int y, boolean[][] row, boolean[][] col, boolean[][][] gr, boolean[][][] map, int val){
+		row[x][val] = true;
+                col[y][val] = true;
+                gr[x/3][y/3][val] = true;
+                map[x][y][val] = true;
         }
 
-	private boolean isValid(int x, int y, HashMap<String, HashSet<Integer>> map){
-		return map.get("r" + x).size() > 0 && map.get("c" + y).size() > 0 && map.get("gr" + (x / 3) + "_" + (y / 3)).size() > 0 && map.get(x + "_" + y).size() > 0;
-	}	
-
-	private boolean contains(int x, int y, HashMap<String, HashSet<Integer>> map, int val){
-		return map.get("r" + x).contains(val) && map.get("c" + y).contains(val) && map.get("gr" + (x / 3) + "_" + (y / 3)).contains(val) && map.get(x + "_" + y).contains(val);
+	private boolean isRemoved(int x, int y, boolean[][] row, boolean[][] col, boolean[][][] gr, boolean[][][] map, int val){
+		return row[x][val] || col[y][val] || gr[x/3][y/3][val] || map[x][y][val];
 	}
 
-	private HashSet<Integer> createDefaultHashSet(){
-		HashSet<Integer> set = new HashSet<>();
-                for (int k = 1; k <= 9; ++k) set.add(k);
-		return set;
-	}
 }
