@@ -21,4 +21,5 @@ can-i-win - editorial - submit solution
 couples-holding-hands - editorial - submit solution
 strange-printer - editorial - submit solution
 merge-intervals - read discussion and other submission
+triangle - O(n) memory - update solution
 
