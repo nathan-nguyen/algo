@@ -1,10 +1,12 @@
 Solve and update the following problems (Rank by priority):
 
+similar-string-groups - Discussion - Java 8
 partition-labels_
 longest-substring-with-at-least-k-repeating-characters_ - editorial - template
 wiggle-subsequence_
 trapping-rain-water-ii_
 word-break_
+sum-of-distances-in-tree_
 Distinct Subsequences - think about init dp array
 network-delay-time - Using Dijkstra
 3sum-closest_ - submit solution
