@@ -1,0 +1,10 @@
+["PeekingIterator","next","peek","next","next","hasNext"]
+[[[1,2,3]],[],[],[],[],[]]
+["PeekingIterator","hasNext","peek","peek","next","next","peek","peek","next","hasNext","peek","hasNext","next","hasNext"]
+[[[1,2,3,4]],[],[],[],[],[],[],[],[],[],[],[],[],[]]
+
+-->
+
+[null,1,2,2,3,false]
+[null,true,1,1,1,2,3,3,3,true,4,true,4,false]
+
