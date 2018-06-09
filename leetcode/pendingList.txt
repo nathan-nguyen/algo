@@ -26,5 +26,4 @@ strange-printer - editorial - submit solution
 merge-intervals - read discussion and other submission
 triangle - O(n) memory - update solution
 peeking-iterator_ - O(1) memory solution
-hand-of-straights__ - 2 pointers
 
