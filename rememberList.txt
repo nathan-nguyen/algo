@@ -14,4 +14,5 @@ network-delay-time - leetcode
 
 rectangle-area - leetcode
 
+132-pattern - leetcode
 
