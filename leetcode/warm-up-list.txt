@@ -1,5 +1,4 @@
 # warm up list
 
 permutations-ii
-problems/valid-sudoku
 
