@@ -1,5 +1,6 @@
 Solve and update the following problems (Rank by priority):
 
+132-pattern_ - Editorial - Discussion
 similar-string-groups - Discussion - Java 8
 partition-labels_
 longest-substring-with-at-least-k-repeating-characters_ - editorial - template
