@@ -40,15 +40,11 @@ class Solution {
 	}
 
 	private void add(int x, int y, boolean[][] row, boolean[][] col, boolean[][][] gr, int val){
-		row[x][val] = false;
-		col[y][val] = false;
-		gr[x/3][y/3][val] = false;
+		row[x][val] = col[y][val] = gr[x/3][y/3][val] = false;
 	}
 
 	private void remove(int x, int y, boolean[][] row, boolean[][] col, boolean[][][] gr, int val){
-		row[x][val] = true;
-                col[y][val] = true;
-                gr[x/3][y/3][val] = true;
+		row[x][val] = col[y][val] = gr[x/3][y/3][val] = true;
         }
 
 	private boolean isRemoved(int x, int y, boolean[][] row, boolean[][] col, boolean[][][] gr, int val){
