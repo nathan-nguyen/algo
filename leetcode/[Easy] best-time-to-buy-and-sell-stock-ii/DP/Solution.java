@@ -4,16 +4,14 @@ class Solution {
 
 		int n = p.length;
 		// 0 - Not buy ; 1 - Hold
-		int[][] dp = new int[n][2];
-
-		dp[0][0] = 0;
-		dp[0][1] = -p[0];
+		int notBuy = 0;
+		int hold = -p[0];
 
 		for (int i = 1; i < n; ++i){
-			dp[i][0] = Math.max(dp[i-1][0], dp[i-1][1] + p[i]);
-			dp[i][1] = dp[i][0] - p[i];
+			notBuy = Math.max(notBuy, hold + p[i]);
+			hold = notBuy - p[i];
 		}
 
-		return Math.max(dp[n-1][0], dp[n-1][1] + p[n-1]);
+		return notBuy;
 	}
 }
