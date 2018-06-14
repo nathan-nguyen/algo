@@ -29,6 +29,5 @@ peeking-iterator_ - O(1) memory solution
 candy_
 find-k-th-smallest-pair-distance_
 
-Optimization:
-merge-k-sorted-lists
+longest-valid-parentheses - Read other solutions
 
