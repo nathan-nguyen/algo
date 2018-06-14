@@ -1,0 +1,37 @@
+["This", "is", "an", "example", "of", "text", "justification."]
+16
+["This", "is", "an", "example", "of", "text", "justification."]
+14
+["What","must","be","acknowledgment","shall","be"]
+16
+["What","must","be","acknowledgment","shall","be"]
+14
+["Science","is","what","we","understand","well","enough","to","explain","to","a","computer.","Art","is","everything","else","we","do"]
+20
+["Science","is","what","we","understand","well","enough","to","explain","to","a","computer.","Art","is","everything","else","we","do"]
+10
+["Science","is","what","we","understand","well","enough","to","explain","to","a","computer.","Art","is","everything","else","we","do"]
+11
+["Science","is","what","we","understand","well","enough","to","explain","to","a","computer.","Art","is","everything","else","we","do"]
+12
+["Science","is","what","we","understand","well","enough","to","explain","to","a","computer.","Art","is","everything","else","we","do"]
+13
+["Science","is","what","we","understand","well","enough","to","explain","to","a","computer.","Art","is","everything","else","we","do"]
+14
+["Science","is","what","we","understand","well","enough","to","explain","to","a","computer.","Art","is","everything","else","we","do"]
+15
+
+-->
+
+["This    is    an","example  of text","justification.  "]
+["This   is   an","example     of","text          ","justification."]
+["What   must   be","acknowledgment  ","shall be        "]
+["What  must  be","acknowledgment","shall be      "]
+["Science  is  what we","understand      well","enough to explain to","a  computer.  Art is","everything  else  we","do                  "]
+["Science is","what    we","understand","well      ","enough  to","explain to","a         ","computer. ","Art     is","everything","else we do"]
+["Science  is","what     we","understand ","well enough","to  explain","to        a","computer.  ","Art      is","everything ","else we do "]
+["Science   is","what      we","understand  ","well  enough","to   explain","to         a","computer.   ","Art       is","everything  ","else we do  "]
+["Science    is","what       we","understand   ","well   enough","to explain to","a   computer.","Art        is","everything   ","else we do   "]
+["Science     is","what        we","understand    ","well enough to","explain  to  a","computer.  Art","is  everything","else we do    "]
+["Science is what","we   understand","well  enough to","explain   to  a","computer.   Art","is   everything","else we do     "]
+
