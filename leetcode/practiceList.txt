@@ -1,0 +1,4 @@
+# Quick implementation
+
+insert-interval
+
