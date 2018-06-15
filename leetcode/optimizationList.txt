@@ -2,4 +2,5 @@
 
 count-complete-tree-nodes
 merge-k-sorted-lists
+edit-distance
 
