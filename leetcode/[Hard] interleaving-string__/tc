@@ -1,3 +1,9 @@
+"a"
+"b"
+"ab"
+"a"
+"b"
+"ba"
 "aabcc"
 "dbbca"
 "aadbbcbcac"
@@ -7,10 +13,24 @@
 "aabcc"
 "dbbca"
 "aadbbbaccc"
+"a"
+"b"
+"a"
+"a"
+""
+"c"
+"db"
+"b"
+"cbb"
 
 -->
 
 true
 true
+true
+true
+false
+false
+false
 false
 
