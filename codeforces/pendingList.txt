@@ -5,3 +5,5 @@ Added solution java code for 963B
 Read editorial for 961E_
 963C_
 
+295B_
+
