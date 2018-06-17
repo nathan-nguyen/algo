@@ -31,7 +31,8 @@ candy_
 find-k-th-smallest-pair-distance_
 maximal-rectangle_
 scramble-string_
-
+lru-cache_
+max-points-on-a-line_
 
 
 longest-valid-parentheses - Read other solutions
