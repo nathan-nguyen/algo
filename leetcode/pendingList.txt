@@ -39,3 +39,5 @@ count-of-smaller-numbers-after-self_ - Add Merge sort solution
 longest-valid-parentheses - Read other solutions
 largest-rectangle-in-histogram_ - Read discussion solution
 
+wildcard-matching_ - Add more elegant solution
+
