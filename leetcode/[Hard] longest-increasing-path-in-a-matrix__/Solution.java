@@ -4,24 +4,27 @@ class Solution {
 		int n = matrix.length;
 		int m = matrix[0].length;
 
-		List<int[]> l = new ArrayList<>();
-		for (int i = 0; i < n; ++i){
-			for (int j = 0; j < m; ++j) l.add(new int[]{i, j});
-		}
-		l.sort((u, v) -> (matrix[u[0]][u[1]] - matrix[v[0]][v[1]]));
-
-		int[][] dp = new int[n][m];
+		int[][] mem = new int[n][m];
 		int max = 0;
-
-		for (int[] a: l){
-			int i = a[0], j = a[1];
-			dp[i][j] = 1;
-			if (i > 0 && matrix[i][j] > matrix[i-1][j]) dp[i][j] = Math.max(dp[i][j], dp[i-1][j] + 1);
-			if (j > 0 && matrix[i][j] > matrix[i][j-1]) dp[i][j] = Math.max(dp[i][j], dp[i][j-1] + 1);
-			if (i < n - 1 && matrix[i][j] > matrix[i+1][j]) dp[i][j] = Math.max(dp[i][j], dp[i+1][j] + 1);
-			if (j < m - 1 && matrix[i][j] > matrix[i][j+1]) dp[i][j] = Math.max(dp[i][j], dp[i][j+1] + 1);
-			max = Math.max(max, dp[i][j]);
+		for (int i = 0; i < n; ++i){
+			for (int j = 0; j < m; ++j){
+				max = Math.max(max, dfs(matrix, n, m, i, j, mem));
+			}
 		}
 		return max;
 	}
+
+	private int dfs(int[][] matrix, int n, int m, int i, int j, int[][] mem){
+		if (mem[i][j] != 0) return mem[i][j];
+
+		int max = 1;
+		if (i > 0 && matrix[i][j] > matrix[i-1][j]) max = Math.max(max, 1 + dfs(matrix, n, m, i - 1, j, mem));
+		if (j > 0 && matrix[i][j] > matrix[i][j-1]) max = Math.max(max, 1 + dfs(matrix, n, m, i, j - 1, mem));
+		if (i < n-1 && matrix[i][j] > matrix[i+1][j]) max = Math.max(max, 1 + dfs(matrix, n, m, i + 1, j, mem));
+		if (j < m-1 && matrix[i][j] > matrix[i][j+1]) max = Math.max(max, 1 + dfs(matrix, n, m, i, j + 1, mem));
+
+		mem[i][j] = max;
+		return mem[i][j];
+	}
 }
+
