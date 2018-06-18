@@ -86,3 +86,13 @@ Example: Leetcode find-the-duplicate-number
 - Dont hesitate to use extra variables to simplize the problem
 
 // -------------------------------------------------------------------------------- //
+
+9. String problems
+
+- Two pointers
+- Dynamic programming
+- Recursive
+- Start from letter a - z (Consider each letter position, start with positions of all letter a)
+- Start from letter z - a (Consider each letter position, start with positions of all letter z)
+
+
