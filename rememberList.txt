@@ -27,3 +27,5 @@ longest-valid-parentheses - leetcode
 edit-distance - leetcode
 interleaving-string
 
+longest-consecutive-sequence__
+

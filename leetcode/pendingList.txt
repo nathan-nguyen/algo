@@ -20,6 +20,7 @@ top-k-frequent-elements_ - O(n) solution
 basic-calculator - parseTree - submit solution
 basic-calculator-ii - parseTree - submit solution
 matchsticks-to-square_
+max-points-on-a-line_
 gray-code_ - 3 lines solution
 can-i-win - editorial - submit solution
 couples-holding-hands - editorial - submit solution
