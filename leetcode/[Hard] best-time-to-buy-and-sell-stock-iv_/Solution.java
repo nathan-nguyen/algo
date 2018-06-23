@@ -4,13 +4,15 @@ class Solution {
 
 		int n = p.length;
 
-		if (k >= n / 2){
-			int total = 0;
-			for (int i = 1; i < n; ++i){
-				if (p[i] > p[i-1]) total += (p[i] - p[i-1]);
+		int total = 0;
+		int count = 0;
+		for (int i = 1; i < n; ++i){
+			if (p[i] > p[i-1]) {
+				total += (p[i] - p[i-1]);
+				++count;
 			}
-			return total;
 		}
+		if (k >= count) return total;
 
 		int hold;
 		int[][] notHold = new int[k+1][n];
