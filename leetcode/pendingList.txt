@@ -35,7 +35,8 @@ scramble-string_
 lru-cache_
 max-points-on-a-line_
 
-count-of-smaller-numbers-after-self_ - Add Merge sort solution
+count-of-smaller-numbers-after-self_ - Add Merge sort solution, BST solution
+reverse-pairs - Add Merge sort solution, BST solution
 
 longest-valid-parentheses - Read other solutions
 largest-rectangle-in-histogram_ - Read discussion solution
