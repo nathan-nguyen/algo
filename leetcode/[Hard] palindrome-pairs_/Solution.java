@@ -13,22 +13,19 @@ class Solution {
 					if (set.contains(i + "_" + val)) continue;
 
 					List<Integer> pair = new ArrayList<>();
-					pair.add(i);
-					pair.add(val);
+					pair.add(i);	pair.add(val);
 					l.add(pair);
 					set.add(i + "_" + val);
 				}
 			}
 
 			for (String s: getPairRight(words[i])){
-				if (s.equals(words[i])) continue;
                                 if (map.containsKey(s)){
 					int val = map.get(s);
 					if (set.contains(val + "_" + i)) continue;
 
                                         List<Integer> pair = new ArrayList<>();
-                                        pair.add(val);
-					pair.add(i);
+                                        pair.add(val);	pair.add(i);
                                         l.add(pair);
 					set.add(val + "_" + i);
                                 }   
@@ -40,11 +37,12 @@ class Solution {
 	private List<String> getPairLeft(String s){
 		List<String> result = new ArrayList<>();
 
-		if (!isPalindrome(s)) result.add((new StringBuilder(s)).reverse().toString());
+		String rv = (new StringBuilder(s)).reverse().toString();
+		if (!isPalindrome(s)) result.add(rv);
 		else if (s.length() > 0) result.add("");
 
 		for (int i = s.length() - 1; i > 0; --i){
-			if (isPalindrome(s.substring(i))) result.add((new StringBuilder(s.substring(0, i))).reverse().toString()); 
+			if (isPalindrome(s.substring(i))) result.add(rv.substring(s.length() - i)); 
 		}
 		return result;
 	}
@@ -54,8 +52,10 @@ class Solution {
 
 		if (isPalindrome(s) && s.length() > 0) result.add("");
 
+		String rv = (new StringBuilder(s)).reverse().toString();
+
 		for (int i = 1; i < s.length(); ++i){
-			if (isPalindrome(s.substring(0, i))) result.add((new StringBuilder(s.substring(i))).reverse().toString());
+			if (isPalindrome(s.substring(0, i))) result.add(rv.substring(0, s.length() - i));
 		}
 		return result;
 	}
