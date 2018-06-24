@@ -45,3 +45,5 @@ wildcard-matching_ - Add more elegant solution
 
 palindrome-partitioning-ii_
 
+freedom-trail_ - Try to solve by using dfs
+
