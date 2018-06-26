@@ -34,3 +34,5 @@ department-top-three-salaries_
 freedom-trail_ - leetcode
 ipo - leetcode
 
+minimum-cost-to-hire-k-workers - leetcode
+
