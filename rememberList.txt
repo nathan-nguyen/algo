@@ -29,9 +29,15 @@ interleaving-string
 
 longest-consecutive-sequence__
 
+
+
 (*) SQL
 second-highest-salary_
+rank-scores_
 department-top-three-salaries_
+
+
+
 
 freedom-trail_ - leetcode
 ipo - leetcode
