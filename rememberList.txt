@@ -46,3 +46,5 @@ minimum-cost-to-hire-k-workers - leetcode
 
 ctci-coin-change - hackerrank
 
+crush__ - hackerrank
+
