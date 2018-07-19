@@ -1,4 +1,6 @@
 Solve and update the following problems (Rank by priority):
 
+euler002__ : Rewrite solution
+
 larrys-array__ : Editorial + Discussion for better solution
 
