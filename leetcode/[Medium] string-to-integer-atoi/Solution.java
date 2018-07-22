@@ -4,8 +4,6 @@ class Solution {
 		while (pointer < s.length() && s.charAt(pointer) == ' ') ++pointer;
 		if (pointer == s.length()) return 0;
 
-		StringBuilder sb = new StringBuilder();
-
 		int sign = 1;
 		if (s.charAt(pointer) == '-') {
 			++pointer;
