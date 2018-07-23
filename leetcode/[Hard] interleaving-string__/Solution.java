@@ -1,19 +1,22 @@
 class Solution {
 	public boolean isInterleave(String s1, String s2, String s3) {
-		return isInterleave(s1, 0, s2, 0, s3, 0);
-	}
+		if (s1.length() + s2.length() != s3.length()) return false;
 
-	private boolean isInterleave(String s1, int i1, String s2, int i2, String s3, int i3) {
-		if (i3 == s3.length()) return i1 == s1.length() && i2 == s2.length();
+		boolean dp[][] = new boolean[s1.length() + 1][s2.length() + 1];
 
-		boolean result = false;
-		if (i1 < s1.length() && s1.charAt(i1) == s3.charAt(i3)) {
-			result = result || isInterleave(s1, i1 + 1, s2, i2, s3, i3 + 1);
+		dp[0][0] = true;
+		for (int i = 1; i <= s1.length() && dp[i-1][0]; ++i) {
+			dp[i][0] = s1.charAt(i - 1) == s3.charAt(i - 1);
 		}
-		if (!result && i2 < s2.length() && s2.charAt(i2) == s3.charAt(i3)) {
-			result = result || isInterleave(s1, i1, s2, i2 + 1, s3, i3 + 1);
+		for (int i = 1; i <= s2.length() && dp[0][i-1]; ++i) {
+			dp[0][i] = s2.charAt(i - 1) == s3.charAt(i - 1);
 		}
 
-		return result;
+		for (int i = 1; i <= s1.length(); ++i) {
+			for (int j = 1; j <= s2.length(); ++j) {
+				dp[i][j] = (dp[i-1][j] && s1.charAt(i - 1) == s3.charAt(i + j - 1)) || (dp[i][j-1] && s2.charAt(j - 1) == s3.charAt(i + j - 1));
+			}
+		}
+		return dp[s1.length()][s2.length()];
 	}
 }
