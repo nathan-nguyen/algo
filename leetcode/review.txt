@@ -1,5 +1,4 @@
 [Easy] backspace-string-compare__
-[Easy] best-time-to-buy-and-sell-stock__
 [Easy] magic-squares-in-grid_
 [Easy] majority-element_
 [Easy] rectangle-overlap_
@@ -43,7 +42,6 @@
 [Medium] 3sum-closest__
 [Medium] best-time-to-buy-and-sell-stock-with-transaction-fee_
 [Medium] bitwise-and-of-numbers-range__
-[Medium] brick-wall_
 [Medium] coin-change-2__
 [Medium] contains-duplicate-iii_
 [Medium] convert-sorted-list-to-binary-search-tree_
