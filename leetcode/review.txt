@@ -52,7 +52,6 @@
 [Medium] friends-of-appropriate-ages__
 [Medium] gas-station_
 [Medium] gray-code__
-[Medium] hand-of-straights__
 [Medium] house-robber-ii_
 [Medium] integer-replacement__
 [Medium] jump-game_
