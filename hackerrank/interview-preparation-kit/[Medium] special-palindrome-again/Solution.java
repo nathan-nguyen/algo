@@ -11,20 +11,29 @@ public class Solution {
 		int n = in.nextInt();
 		String s = in.next();
 
-		int count = 0;
-		for (int i = 0; i < n; ++i) {
-			for (int k = 0; k <= i && i + k < n; ++k) {
-				if (s.charAt(i - k) != s.charAt(i + k)) break;
-				if (k > 1 && s.charAt(i - k) != s.charAt(i - k + 1)) break;
-				++count;
-			}
+		int[] left = new int[n];
+		int[] right = new int [n];
+
+		left[0] = 1;
+		for (int i = 1; i < n; ++i) {
+			if (s.charAt(i) == s.charAt(i - 1)) left[i] = left[i - 1] + 1;
+			else left[i] = 1;
+		}
+		right[n - 1] = 1;
+		for (int i = n - 2; i >= 0; --i) {
+			if (s.charAt(i) == s.charAt(i + 1)) right[i] = right[i + 1] + 1;
+			else right[i] = 1;
+		}
+
+		long total = n;
+		for (int i = 1; i < n - 1; ++i) {
+			if (s.charAt(i - 1) != s.charAt(i + 1)) continue;
+			total += Math.min(left[i-1], right[i+1]);
 		}
 		for (int i = 0; i < n - 1; ++i) {
-			for (int k = 0; k <= i && i + k + 1 < n; ++k) {
-				if (s.charAt(i - k) != s.charAt(i) || s.charAt(i + k + 1) != s.charAt(i)) break;
-				++count;
-			}
+			if (s.charAt(i) != s.charAt(i + 1)) continue;
+			total += Math.min(left[i], right[i + 1]);
 		}
-		System.out.println(count);
+		System.out.println(total);
 	}
 }
