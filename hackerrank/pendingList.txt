@@ -4,3 +4,5 @@ euler002__ : Rewrite solution
 
 larrys-array__ : Editorial + Discussion for better solution
 
+ctci-merge-sort: Update merge sort solution
+
