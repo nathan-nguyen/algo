@@ -28,8 +28,7 @@ public class Solution {
 		Set<Long> startSet = new HashSet<>();
 		Set<Long> endSet = new HashSet<>();
 
-		// [0, k] inclusive
-
+		// Unique prefix sum with minimum and maximum index (startList - minimum index, endList - maximum index)
 		List<long[]> startList = new ArrayList<>();
 		List<long[]> endList = new ArrayList<>();
 
@@ -68,6 +67,7 @@ public class Solution {
 
 			long searchValue = m - 1 - key[1];
 
+			// Strictly smaller
 			long[] searchResult = sl.lower(new long[] {Long.MAX_VALUE, m - 1 - key[1]});
 			if (searchResult == null) continue;
 				
