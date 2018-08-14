@@ -1,0 +1,8 @@
+{"headers": {"Employee": ["Id", "Salary"]}, "argument": 2, "rows": {"Employee": [[1, 100], [2, 200], [3, 300]]}}
+{"headers": {"Employee": ["Id","Salary"]}, "argument": 1, "rows": {"Employee": [[1,100]]}}
+
+-->
+
+{"headers":["getNthHighestSalary(2)"],"values":[[200]]}
+{"headers":["getNthHighestSalary(1)"],"values":[[100]]}
+
