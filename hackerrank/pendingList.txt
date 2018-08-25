@@ -6,3 +6,5 @@ larrys-array__ : Editorial + Discussion for better solution
 
 ctci-merge-sort: Update merge sort solution
 
+min-max-riddle_
+
