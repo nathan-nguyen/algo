@@ -14,13 +14,12 @@ class Solution {
 		double[] result = new double[queries.length];
 		for (int i = 0; i < queries.length; ++i) {
 			result[i] = dfs(queries[i][0], queries[i][1], nodeMap, edgeMap, new HashSet<>());
-			if (result[i] == 0) result[i] = -1;
 		}
 		return result;
 	}
 
 	private double dfs(String a, String b, HashMap<String, List<String>> nodeMap, HashMap<String, Double> edgeMap, HashSet<String> set) {
-		if (!nodeMap.containsKey(a) || set.contains(a)) return 0;
+		if (!nodeMap.containsKey(a) || set.contains(a)) return -1;
 		if (a.equals(b)) return 1;
 
 		set.add(a);
@@ -29,8 +28,7 @@ class Solution {
 			if (result > 0) return result * edgeMap.get(a + "_" + c);
 		}
 
-		set.remove(a);
-		return 0;
+		return -1;
 	}
 
 	private void updateMap(String a, String b, double value, HashMap<String, List<String>> nodeMap, HashMap<String, Double> edgeMap) {
