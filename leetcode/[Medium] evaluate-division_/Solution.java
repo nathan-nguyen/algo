@@ -1,51 +1,42 @@
 class Solution {
-	// The input is always valid. You may assume that evaluating the queries will result in no division by zero and there is no contradiction.
+	/** No division by zero and no contradiction - All values are positive
+	 */
+	
 	public double[] calcEquation(String[][] equations, double[] values, String[][] queries) {
-		HashMap<String, ArrayList<String>> gr = new HashMap<>();
-		HashMap<String, Double> ed = new HashMap<>();
+		HashMap<String, List<String>> nodeMap = new HashMap<>();
+		HashMap<String, Double> edgeMap = new HashMap<>();
 
-		for (int i = 0; i < values.length; ++i){
-			String[] eq = equations[i];
-			double v = values[i];
-
-			update(gr, ed, equations[i][0], equations[i][1], values[i]);
-			update(gr, ed, equations[i][1], equations[i][0], 1 / values[i]);
+		for (int i = 0; i < equations.length; ++i) {
+			updateMap(equations[i][0], equations[i][1], values[i], nodeMap, edgeMap);
+			updateMap(equations[i][1], equations[i][0], 1 / values[i], nodeMap, edgeMap);
 		}
 
 		double[] result = new double[queries.length];
-		for (int i = 0; i < queries.length; ++i){
-			if (!gr.containsKey(queries[i][1])) result[i] = -1.0;
-			else result[i] = dfs(gr, ed, queries[i][0], queries[i][1], new HashSet<>());
+		for (int i = 0; i < queries.length; ++i) {
+			result[i] = dfs(queries[i][0], queries[i][1], nodeMap, edgeMap, new HashSet<>());
+			if (result[i] == 0) result[i] = -1;
 		}
 		return result;
 	}
 
-	private void update(HashMap<String, ArrayList<String>> gr, HashMap<String, Double> ed, String a, String b, double v){
-		ArrayList<String> l;
-		if (gr.containsKey(a)) l = gr.get(a);
-		else {
-			l = new ArrayList<>();
-			gr.put(a, l);
-		}
-
-		l.add(b);
-		ed.put(a + "_" + b, v);
-	}
-
-	private double dfs(HashMap<String, ArrayList<String>> gr, HashMap<String, Double> ed, String a, String b, HashSet<String> set){
-		if (!gr.containsKey(a)) return -1.0;
-
-		if (a.equals(b)) return 1.0;
+	private double dfs(String a, String b, HashMap<String, List<String>> nodeMap, HashMap<String, Double> edgeMap, HashSet<String> set) {
+		if (!nodeMap.containsKey(a) || set.contains(a)) return 0;
+		if (a.equals(b)) return 1;
 
 		set.add(a);
-		ArrayList<String> l = gr.get(a);
-
-		double v;
-		for (String next: l){
-			if (set.contains(next)) continue;
-			double u = dfs(gr, ed, next, b, set);
-			if (Double.compare(u, -1.0) != 0) return u * ed.get(a + "_" + next);
+		for (String c: nodeMap.get(a)) {
+			double result = dfs(c, b, nodeMap, edgeMap, set);
+			if (result > 0) return result * edgeMap.get(a + "_" + c);
 		}
-		return -1.0;
+
+		set.remove(a);
+		return 0;
+	}
+
+	private void updateMap(String a, String b, double value, HashMap<String, List<String>> nodeMap, HashMap<String, Double> edgeMap) {
+		List<String> neighborList = nodeMap.getOrDefault(a, new ArrayList<>());
+		neighborList.add(b);
+		nodeMap.put(a, neighborList);
+		edgeMap.put(a + "_" + b, value);
 	}
 }
