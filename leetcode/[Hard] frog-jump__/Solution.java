@@ -1,23 +1,25 @@
 class Solution {
 	public boolean canCross(int[] stones) {
-		if (stones.length == 0) return false;
+		if (stones.length == 1) return true;
+		if (stones.length > 1 && stones[1] != 1) return false;
 
-		HashMap<Integer, HashSet<Integer>> map = new HashMap<>();
+		HashSet<String> set = new HashSet<>();
 
-		for (int i = 0; i < stones.length; ++i){
-			if (map.containsKey(stones[i])) continue;
-			map.put(stones[i], new HashSet<Integer>());
-		}
+		HashSet<Integer> step = new HashSet<>();
+		for (int e: stones) step.add(e);
 
-		map.get(stones[0]).add(0);
+		return dfs(step, stones[stones.length - 1], 1, 1, set);
+	}
 
-		for (int i = 0; i < stones.length - 1; ++i){
-			for (int k: map.get(stones[i])){
-				if (k > 0 && map.containsKey(stones[i] + k)) map.get(stones[i] + k).add(k);
-				if (k - 1 > 0 && map.containsKey(stones[i] + k - 1)) map.get(stones[i] + k - 1).add(k - 1);
-				if (k + 1 > 0 && map.containsKey(stones[i] + k + 1)) map.get(stones[i] + k + 1).add(k + 1);
-			}
-		}
-		return map.get(stones[stones.length - 1]).size() > 0;
+	private boolean dfs(HashSet<Integer> step, int last, int current, int count, HashSet<String> set) {
+		if (current > last || !step.contains(current) || count == 0 || set.contains(current + "_" + count)) return false;
+		if (current == last) return true;
+
+		set.add(current + "_" + count);
+		if (dfs(step, last, current + (count + 1), count + 1, set)) return true;
+		if (dfs(step, last, current + count, count, set)) return true;
+		if (dfs(step, last, current + (count - 1), count - 1, set)) return true;
+
+		return false;
 	}
 }
