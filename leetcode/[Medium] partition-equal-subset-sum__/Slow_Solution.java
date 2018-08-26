@@ -7,9 +7,10 @@ class Solution {
 
 		sum /= 2;
 		boolean[] mem = new boolean[sum + 1];
+		boolean[] newMem = new boolean[sum + 1];
 
 		for (int i = 0; i < nums.length; ++i) {
-			boolean[] newMem = Arrays.copyOfRange(mem, 0, sum + 1);
+			newMem = Arrays.copyOfRange(mem, 0, sum + 1);
 			if (nums[i] <= sum) newMem[nums[i]] = true;
 
 			for (int j = 1; j <= sum - nums[i]; ++j) {
@@ -20,3 +21,4 @@ class Solution {
 		return mem[sum];
 	}
 }
+
