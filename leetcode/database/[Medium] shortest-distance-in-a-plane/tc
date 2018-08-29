@@ -1,0 +1,8 @@
+{"headers":{"point_2d":["x","y"]},"rows":{"point_2d":[[-1,-1],[0,0],[-1,-2]]}}
+{"headers":{"point_2d":["x","y"]},"rows":{"point_2d":[[0,-3],[0,0]]}}
+
+-->
+
+{"headers":["shortest"],"values":[[1.0]]}
+{"headers":["shortest"],"values":[[3.0]]}
+
