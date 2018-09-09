@@ -35,8 +35,6 @@ Example: Codeforces 295B
 
 - Union find
 
-- Detect cycle in undirected graph
-
 - Easy implementation
 
 // -------------------------------------------------------------------------------- //
@@ -95,4 +93,9 @@ Example: Leetcode find-the-duplicate-number
 - Start from letter a - z (Consider each letter position, start with positions of all letter a)
 - Start from letter z - a (Consider each letter position, start with positions of all letter z)
 
+// -------------------------------------------------------------------------------- //
+
+10. Detect cycle in undirected graph
+
+- Use simple dfs O(n)
 
