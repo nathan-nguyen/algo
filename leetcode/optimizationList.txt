@@ -11,3 +11,5 @@ longest-increasing-path-in-a-matrix__
 
 serialize-and-deserialize-binary-tree
 
+*.scala
+

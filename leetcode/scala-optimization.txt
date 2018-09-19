@@ -1,4 +1,0 @@
-# Optimize scala source code
-
-- two-sum
-
