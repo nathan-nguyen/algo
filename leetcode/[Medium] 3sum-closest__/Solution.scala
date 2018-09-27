@@ -3,7 +3,7 @@ object Solution {
         scala.util.Sorting.quickSort(nums)
         var min = nums(0) + nums(1) + nums(2)
         
-        def twoSumClosest(i: Int) = {
+        (0 to nums.length - 3) foreach(i => {
             var start = i + 1
             var end = nums.length - 1
             while (start < end) {
@@ -12,9 +12,7 @@ object Solution {
                 else end -= 1
                 if (Math.abs(min - target) > Math.abs(sum - target)) min = sum
             }
-        }
-        
-        (0 to nums.length - 3) foreach(i => twoSumClosest(i))
+        })
         min
     }
 }
