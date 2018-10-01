@@ -15,26 +15,25 @@ public class Solution {
 		String s = in.next();
 
 		boolean[] u = new boolean[26];
-
 		List<Integer> list = new ArrayList<>();
 
-		for (int i = 0; i < s.length(); ++i) {
+		for (int i = 0; i < n; ++i) {
 			int index = s.charAt(i) - 'a';
 			if (u[index]) continue;
-			u[index] = true;
 
-			list.add(index);
+			u[index] = true;
+			list.add(index + 1);
 		}
 
 		java.util.Collections.sort(list);
 
-		int total = 0;
-		int last = -2;
+		int total = 0, last = -2;
 		for (int c: list) {
 			if (k <= 0) return total;
 			if (c >= last + 2) {
-				last = c;
+				--k;
 				total += c;
+				last = c;
 			}
 		}
 		
