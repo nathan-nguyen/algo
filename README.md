@@ -99,3 +99,9 @@ Example: Leetcode find-the-duplicate-number
 
 - Use simple dfs O(n)
 
+// -------------------------------------------------------------------------------- //
+
+11. When dealing with overlapping elements, consider combining non-overlapping elements instead of dividing them into multiple small elements.
+
+Example: Leetcode meeting-rooms-ii
+
