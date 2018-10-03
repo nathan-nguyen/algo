@@ -105,3 +105,8 @@ Example: Leetcode find-the-duplicate-number
 
 Example: Leetcode meeting-rooms-ii
 
+// -------------------------------------------------------------------------------- //
+
+12. Depth First Search
+
+When the graph contains loops and parent value depends on child value, using DFS is **not recommended**.
