@@ -1,13 +1,16 @@
 #!/bin/bash
 User=$1
+Page=$2
 
-for number in {1..23}
+for (( i = 1; i <= $Page; i++ ))
 do
-  URL=http://codeforces.com/submissions/$User/page/$number
-  LOG=${number}.log
+  URL=http://codeforces.com/submissions/$User/page/$i
+  LOG=${i}.log
   echo "URL: ${URL} - Log: ${LOG}"
   curl $URL > $LOG
 done
 
-cat *.log | grep problem/ | sed s/'<a href=\"\/problemset\/problem\/'//g | sed s/'\">'//g | sed s/'\/'//g | sort | uniq | cut -c13-16 | grep [C-Z] > result
+rm ${User}.problemlist
+cat *.log | grep problem/ | sed 's/            <a href="//g' | sed 's/\">//g' | sort -u | tee -a ${User}.problemlist
 rm *.log
+
