@@ -1,25 +1,19 @@
 import java.util.Scanner;
-import java.util.ArrayList;
 
 public class Solution {
 	public static void main(String[] args){
 		Solution solution = new Solution();
-		solution.solve();
+		System.out.println(solution.solve());
 	}
 
-	private void solve(){
+	private int solve(){
 		Scanner in = new Scanner(System.in);
-
 		int n = in.nextInt();
 
-
 		for (int i = 1; i <= 512; ++i){
-			if (Integer.parseInt(Integer.toBinaryString(i)) > n){
-				System.out.println(i - 1);
-				return;
-			}
+			if (Integer.parseInt(Integer.toBinaryString(i)) > n) return i - 1;
 		}
 
-		System.out.println(512);
+		return 512;
 	}
 }
