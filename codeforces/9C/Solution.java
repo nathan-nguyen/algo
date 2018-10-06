@@ -10,10 +10,14 @@ public class Solution {
 		Scanner in = new Scanner(System.in);
 		int n = in.nextInt();
 
-		for (int i = 1; i <= 512; ++i){
-			if (Integer.parseInt(Integer.toBinaryString(i)) > n) return i - 1;
-		}
+		// Using binary search to find the solution, f(left) always <= n, f(right) always > n
 
-		return 512;
+		int left = 1, right = 513;
+		while (left + 1 < right) {
+			int mid = (left + right) / 2;
+			if (Integer.parseInt(Integer.toBinaryString(mid)) > n) right = mid;
+			else left = mid;
+		}
+		return left;
 	}
 }
