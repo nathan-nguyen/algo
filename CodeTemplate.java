@@ -94,13 +94,16 @@ n ^ (1 << k)
 
 --------------------
 
-class SegmentTree {
+abstract class SegmentTree {
 	int st[]; //Array to store segment tree
-	int OUT_RANGE_VALUE = Integer.MAX_VALUE;
+	int OUT_RANGE_VALUE = Integer.MAX_VALUE;	// Min
+	int OUT_RANGE_VALUE = Integer.MIN_VALUE;	// Max
+	int OUT_RANGE_VALUE = 0;			// Sum
  
-	int function(int x, int y) {
-		return (x < y) ? x : y;
-	}
+	abstract int function(int x, int y);
+	int function(int x, int y) {return (x < y) ? x : y;}	// Min
+	int function(int x, int y) {return (x > y) ? x : y;}	// Max
+	int function(int x, int y) {return x + y;}		// Sum
  
 	int getMid(int s, int e) {
 		return s + (e - s) / 2;
@@ -109,8 +112,7 @@ class SegmentTree {
 
 	// ss - se - index 
 	int queryHelper(int ss, int se, int qs, int qe, int index) {
-		if (qs <= ss && qe >= se) return st[index];
- 
+		if (qs <= ss && qe >= se) return st[index]; 
 		if (se < qs || ss > qe) return OUT_RANGE_VALUE;
  
 		int mid = getMid(ss, se);
