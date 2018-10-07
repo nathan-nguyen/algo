@@ -3,28 +3,28 @@ class Solution {
 		int n = st.length;
 		for (String s: st) if (s.length() > c) return 0;
 
-		int[][] dp = new int[n][2];
+		int[] dp = new int[n];
 
 		int cur = 0, length = -1;
+		dp[0] = -1;
 		for (int i = 0; i < n; ++i) {
 			if (i > 0) {
-				dp[i][1] = dp[i-1][1];
-				length -= st[i-1].length() + 1;
+				length -= st[i - 1].length() + 1;
+				dp[i] = dp[i-1] - 1;
 			}
-			while (length + 1 + st[cur].length() <= c) {
-				length += 1 + st[cur].length();
-				if (cur == n - 1) ++dp[i][1];
-				cur = (cur + 1) % n;
+			while (length <= c) {
+				length += 1 + st[cur++ % n].length();
+				++dp[i];
 			}
-			dp[i][0] = (cur - 1 + n) % n;
 		}
 
 		int ans = 0, next = 0;
 		while (r -- > 0) {
-			ans += dp[next][1];
-			next = (dp[next][0] + 1) % n;
+			ans += dp[next];
+			next = (next + dp[next]) % n;
 		}
 
-		return ans;
+		return ans / n;
 	}
 }
+
