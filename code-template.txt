@@ -209,7 +209,10 @@ abstract class SegmentTree {
 # OTHERS
 #*******************************************************************************
 
-(*) Union Find and Fenwick tree should be included here but they are easy to implement, it is better to remember how to do implementation.
+(*) The following algorithms / data structure should be included here but they are easy to implement, it is better to remember how to do implementation.
+(*) Union Find
+(*) Fenwick Tree
+(*) Tries
 
 #*******************************************************************************
 #
