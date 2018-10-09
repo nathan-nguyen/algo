@@ -4,9 +4,9 @@ class Solution {
 		for (String s: st) if (s.length() > c) return 0;
 
 		int[] dp = new int[n];
+		dp[0] = -1;
 
 		int cur = 0, length = -1;
-		dp[0] = -1;
 		for (int i = 0; i < n; ++i) {
 			if (i > 0) {
 				length -= st[i - 1].length() + 1;
