@@ -1,6 +1,6 @@
 class Solution {
 	public boolean find132pattern(int[] nums) {
-		if (nums.length < 3) return false;
+		if (nums.length == 0) return false;
 		int n = nums.length;
 
 		int[] min = new int[n];
@@ -8,15 +8,18 @@ class Solution {
 
 		for (int i = 1; i < n; ++i) min[i] = Math.min(min[i-1], nums[i]);
 
-		Queue<Integer> queue = new PriorityQueue<>();
-		queue.add(nums[n-1]);
+		Stack<Integer> stack = new Stack<>();
+		stack.push(nums[n-1]);
 
 		for (int i = n - 2; i > 0; --i) {
-			queue.offer(nums[i]);
-			while (queue.size() > 0 && queue.peek() <= min[i - 1]) queue.poll();
+			while (!stack.isEmpty() && stack.peek() <= min[i - 1]) stack.pop();
 
-			if (queue.size() > 0 && queue.peek() < nums[i]) return true;
+			if (!stack.isEmpty() && stack.peek() < nums[i]) return true;
+
+			// Stack is always sorted because all the element >= nums[i]
+			stack.push(nums[i]);
 		}
 		return false;
 	}
 }
+
