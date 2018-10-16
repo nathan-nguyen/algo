@@ -1,26 +1,26 @@
 class Solution {
-	public int minimumTotal(List<List<Integer>> t) {
-		List<List<Integer>> dp = new ArrayList<>();
+	public int minimumTotal(List<List<Integer>> triangle) {
+		if (triangle.size() == 0) return 0;
 
-		for (int i = 0; i < t.size(); ++i) dp.add(new ArrayList<>());
-		dp.get(0).add(t.get(0).get(0));
+		List<Integer> list = new ArrayList<>();
 
-//   0
-//  0 1
-// 0 1 2
-
-		for (int i = 1; i < t.size(); ++i){
-			for (int j = 0; j <= i; ++j){
-				int min = Integer.MAX_VALUE;
-				if (j - 1 >= 0) min = Math.min(min, dp.get(i - 1).get(j - 1));
-				if (j < i) min = Math.min(min, dp.get(i-1).get(j));
-				dp.get(i).add(min + t.get(i).get(j));
+		for (List<Integer> row: triangle) {
+			if (row.size() == 1) {
+				list.addAll(row);
+				continue;
 			}
+
+			List<Integer> nextList = new ArrayList<>();
+			nextList.add(list.get(0) + row.get(0));
+			for (int j = 1; j < list.size(); ++j) {
+				nextList.add(row.get(j) + Math.min(list.get(j-1), list.get(j)));
+			}
+			nextList.add(list.get(list.size() - 1) + row.get(list.size()));
+			list = nextList;
 		}
 
-		int result = Integer.MAX_VALUE;
-		for (int i = 0; i < t.size() ; ++i) result = Math.min(result, dp.get(t.size() - 1).get(i));
-
-		return result;
+		int min = Integer.MAX_VALUE;
+		for (int i: list) min = Math.min(min, i);
+		return min;
 	}
 }
