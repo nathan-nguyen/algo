@@ -1,7 +1,6 @@
 Solve and update the following problems (Rank by priority):
 
-(*) recover-binary-search-tree_
-132-pattern_ - Editorial - Discussion
+recover-binary-search-tree_
 similar-string-groups - Discussion - Java 8
 partition-labels_
 longest-substring-with-at-least-k-repeating-characters_ - editorial - template
@@ -54,5 +53,5 @@ split-array-largest-sum__ - Binary search, submit solution
 
 ------------
 
-count-the-repetitions - Critical
-
+count-the-repetitions
+132-pattern_ - Editorial - Discussion
