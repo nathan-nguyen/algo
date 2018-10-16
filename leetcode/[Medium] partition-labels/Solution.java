@@ -1,39 +1,28 @@
 class Solution {
 	public List<Integer> partitionLabels(String s) {
+		int[] all = new int[26];
+		int[] count = new int[26];
+
+		for (int i = 0; i < s.length(); ++i) ++all[s.charAt(i) - 'a'];
+
+		int local = 0;
 		List<Integer> result = new ArrayList<>();
-
-		int[] min = new int[26];
-		int[] max = new int[26];
-
-		Arrays.fill(min, Integer.MAX_VALUE);
-		Arrays.fill(max, Integer.MIN_VALUE);
-
-		List<Integer> l = new ArrayList<>();
-
-		for (int i = 0; i < s.length(); ++i){
-			int c = s.charAt(i) - 'a';
-
-			if (min[c] == Integer.MAX_VALUE) l.add(c);
-
-			min[c] = Math.min(min[c], i);
-			max[c] = Math.max(max[c], i);
-		}
-
-		l.sort((u, v) -> min[u] - min[v]);
-
-		int left = min[l.get(0)];
-		int right = max[l.get(0)];
-
-		for (int i = 1; i < l.size(); ++i){
-			if (min[l.get(i)] > right){
-				result.add(right - left + 1);
-				left = min[l.get(i)];
-				right = max[l.get(i)];
+		for (int i = 0; i < s.length(); ++i) {
+			++local;
+			++count[s.charAt(i) - 'a'];
+			if (canBreak(all, count)) {
+				result.add(local);
+				local = 0;
 			}
-			else right = Math.max(right, max[l.get(i)]);
 		}
 
-		result.add(right - left + 1);
+		if (local > 0) result.add(local);
 		return result;
+	}
+
+	private boolean canBreak(int[] all, int[] count) {
+		int result = 0;
+		for (int i = 0; i < 26 && result == 0; ++i) result += count[i] * (all[i] - count[i]);
+		return result == 0;
 	}
 }
