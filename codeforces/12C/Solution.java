@@ -1,39 +1,34 @@
-import java.util.Scanner;
-import java.util.Arrays;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Scanner;
 
 public class Solution {
-	public static void main(String[] args){
-		Scanner in = new Scanner(System.in);
-		int n = in.nextInt();
-		int m = in.nextInt();
+    public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+        int n = in.nextInt();
+        int m = in.nextInt();
 
-		int[] price = new int[n];
-		for (int i = 0; i < n; ++i) price[i] = in.nextInt();
+        int[] a = new int[n];
+        for (int i = 0; i < n; ++i) a[i] = in.nextInt();
+        java.util.Arrays.sort(a);
 
-		HashMap<String, Integer> hm = new HashMap<>();
-		for (int i = 0; i < m; ++i) {
-			String fruit = in.next();
-			if (hm.get(fruit) == null) hm.put(fruit, 1);
-			else hm.put(fruit, hm.get(fruit) + 1);
-		}
+        Map<String, Integer> map = new HashMap<>();
+        for (int i = 0; i < m; ++i) {
+            String key = in.next();
+            map.put(key, map.getOrDefault(key, 0) + 1);
+        }
 
-		int[] count = new int[hm.size()];
+        List<Integer> list = new ArrayList<>(map.values());
+        list.sort((u, v) -> Integer.compare(v, u));
 
-		int index = 0;
-		for (String key: hm.keySet()){
-			count[index++] = hm.get(key);
-		}
+        int min = 0, max = 0;
+        for (int i = 0; i < list.size(); ++i) {
+            min += list.get(i) * a[i];
+            max += list.get(i) * a[n - 1 - i];
+        }
 
-		Arrays.sort(price);
-		Arrays.sort(count);
-
-		long min = 0;
-		long max = 0;
-		for (int i = 0; i < count.length; ++i){
-			min += count[i] * price[count.length - 1 - i];
-			max += count[count.length - 1 - i] * price[price.length - 1 - i];
-		}
-		System.out.println(min + " " + max);
-	}
+        System.out.println(min + " " + max);
+    }
 }
