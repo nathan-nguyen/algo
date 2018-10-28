@@ -1,4 +1,4 @@
 # ball
 
-The current solution is wrong but the main idea is using Fenwick Tree.
+The current solution is TLE but the main idea is using Fenwick Tree.
 

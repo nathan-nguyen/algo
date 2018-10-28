@@ -19,7 +19,6 @@ basic-calculator-ii - parseTree - submit solution
 matchsticks-to-square_
 max-points-on-a-line_
 gray-code_ - 3 lines solution
-can-i-win - editorial - submit solution
 couples-holding-hands - editorial - submit solution
 strange-printer - editorial - submit solution
 merge-intervals - read discussion and other submission
