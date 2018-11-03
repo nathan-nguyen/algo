@@ -1,5 +1,7 @@
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.PriorityQueue;
 import java.util.Queue;
 import java.util.Scanner;
@@ -10,7 +12,8 @@ public class Solution {
         solution.solve();
     }
 
-    private List<List<Integer>> graph = new ArrayList<>(); 
+    private List<List<Integer>> graph = new ArrayList<>();
+    private Map<String, int[]> map = new HashMap<>();
     private void solve() {
         Scanner in = new Scanner(System.in);
         int n = in.nextInt();
@@ -38,10 +41,9 @@ public class Solution {
             int localMax = 0;
             for (int j = 0; j < result.size(); ++j) {
                 if (j == i) continue;
-                localMax = Math.max(localMax, result.get(j)[0]);
-                localMax = Math.max(localMax, result.get(j)[1]);
-                for (int k = 0; k < result.size(); ++k) {
-                    if (k == i || k == j) continue;
+                localMax = Math.max(localMax, Math.max(result.get(j)[0], result.get(j)[1]));
+                for (int k = j + 1; k < result.size(); ++k) {
+                    if (k == i) continue;
                     localMax = Math.max(localMax, result.get(j)[0] + result.get(k)[0]);
                 }
             }
@@ -50,8 +52,10 @@ public class Solution {
         return max;
     }
 
-    // Use hashmap to optimize
     private int[] traverse(int parent, int root){
+        String key = parent + "_" + root;
+        if (map.containsKey(key)) return map.get(key);
+
         int pass = 1, notPass = 0;
         Queue<int[]> queue = new PriorityQueue<>((u, v) -> Integer.compare(v[0], u[0]));
 
@@ -59,15 +63,15 @@ public class Solution {
             if (i == parent) continue;
             int[] result = traverse(root, i);
             queue.add(result);
-            // Can be optimized
-            pass = Math.max(pass, result[0] + 1);
             notPass = Math.max(notPass, result[1]);
         }
-        if (queue.size() == 1) {
-            notPass = Math.max(notPass, queue.peek()[0]);
-        } else if (queue.size() >= 2) {
-            notPass = Math.max(notPass, queue.poll()[0] + queue.peek()[0]);
-        }
-        return new int[]{pass, notPass};
+
+        if (!queue.isEmpty()) pass = Math.max(pass, queue.peek()[0] + 1);
+        if (queue.size() == 1) notPass = Math.max(notPass, queue.peek()[0]);
+        else if (queue.size() >= 2) notPass = Math.max(notPass, queue.poll()[0] + queue.peek()[0]);
+
+        int[] finalResult = new int[]{pass, notPass};
+        map.put(key, finalResult);
+        return finalResult;
     }
 }
