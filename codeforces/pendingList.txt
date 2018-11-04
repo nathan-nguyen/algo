@@ -14,9 +14,14 @@ Read editorial for 961E_
 1003C with O(n)
 
 12E_
-13B_
 
 --
 Great problems:
 13C_
+
+--
+Geometry
+13B_
+13D_
+14C_
 
