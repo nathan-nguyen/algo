@@ -1,4 +1,5 @@
 # basic
 
-course-schedule-iii - leetcode
+course-schedule-iii_ - leetcode
+permutation-sequence - leetcode - Faster Implementation
 
