@@ -47,7 +47,21 @@ stickers-to-spell-word - Read other solution from editorial and discussion
 
 split-array-largest-sum__ - Binary search, submit solution
 
-------------
-
 count-the-repetitions
 132-pattern_ - Editorial - Discussion
+
+------------
+
+wiggle-sort-ii_
+    nth_element function in C/C++
+    Median of Medians
+        Quick Select
+    Dutch national flag problem
+    kth-largest-element-in-an-array - cleetcode - O(n)
+        Blum-Floyd-Pratt-Rivest-Tarjan
+--> It is not possible to archive O(n) because nth_element worst case is (n log n)
+--> kth-largest-element-in-an-array worst cases is O(n log n)
+--> However, average case is expected to be O(n)
+
+------------
+
