@@ -45,7 +45,7 @@ public int binarySearch(int[] A, int target) {
 
 (*) Binary search can be implemented by using 2 variable left and right where left <= target and right strictly > target
 
-public int binarySearch(int a, int target) {
+public int binarySearch(int[] a, int target) {
 	int left = 0, right = a.length;
 	while (left + 1 < right) {
 		int mid = (left + right) / 2;
@@ -57,7 +57,7 @@ public int binarySearch(int a, int target) {
 
 (*) Or left strictly < target and right >= target
 
-public iny binarySearch(int a, int target) {
+public iny binarySearch(int[] a, int target) {
         int left = -1, right = a.length - 1;
         while (left + 1 < right) {
                 int mid = (left + right) / 2;

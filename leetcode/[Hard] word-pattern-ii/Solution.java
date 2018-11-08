@@ -10,19 +10,17 @@ class Solution {
         if (map.containsKey(c)) {
             String value = map.get(c);
             if (value.length() > str.length()) return false;
-            return value.equals(str.substring(0, value.length())) && 
-                wordPatternMatch(pattern.substring(1), str.substring(value.length()), map, set);
+            return value.equals(str.substring(0, value.length())) && wordPatternMatch(pattern.substring(1), str.substring(value.length()), map, set);
         }
-        else {
-            for (int i = 1; i <= str.length(); ++i) {
-                String value = str.substring(0, i);
-                if (set.contains(value)) continue;
-                set.add(value);
-                map.put(c, value);
-                if (wordPatternMatch(pattern.substring(1), str.substring(i), map, set)) return true;
-                map.remove(c);
-                set.remove(value);
-            }
+
+        for (int i = 1; i <= str.length(); ++i) {
+            String value = str.substring(0, i);
+            if (set.contains(value)) continue;
+            set.add(value);
+            map.put(c, value);
+            if (wordPatternMatch(pattern.substring(1), str.substring(i), map, set)) return true;
+            map.remove(c);
+            set.remove(value);
         }
         return false;
     }
