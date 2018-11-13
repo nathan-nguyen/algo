@@ -19,25 +19,32 @@ class Solution {
         Arrays.fill(count, Integer.MAX_VALUE);
 
         // Using Dijkstra
-        TreeSet<Integer> set = new TreeSet<>((u, v) -> (count[u] == count[v]) ? Integer.compare(u, v) : Integer.compare(count[u], count[v]));
-        set.add(0);
-
+        Queue<int[]> queue = new PriorityQueue<>((u, v) -> Integer.compare(u[1], v[1]));
         count[0] = 0;
+        queue.add(new int[]{0, count[0]});
+
         int result = 0;
-        while (!set.isEmpty()) {
-            int k = set.pollFirst();
-            visited[k] = true;
-            for (int i: list.get(k)) {
+        while (!queue.isEmpty()) {
+            int[] e = queue.poll();
+            int current = e[0];
+
+            if (visited[current]) continue;
+
+            count[current] = e[1];
+            visited[current] = true;
+
+            for (int i: list.get(current)) {
                 if (visited[i]) continue;
-                int el = map.get(k + "_" + i);
-                if (count[k] + el + 1 <  count[i]) {
-                    set.remove(i);
-                    count[i] = count[k] + el + 1;
-                    set.add(i);
+                int el = map.get(current + "_" + i);
+                if (count[current] + el + 1 <  count[i]) {
+                    count[i] = count[current] + el + 1;
+                    queue.add(new int[]{i, count[i]});
                 }
             }
-            if (count[k] <= m) ++result;
+
+            if (count[current] <= m) ++result;
         }
+
         for (int[] e: edges) {
             result += Math.min(Math.max(m - count[e[0]], 0) + Math.max(m - count[e[1]], 0), e[2]);
         }
