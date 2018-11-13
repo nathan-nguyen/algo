@@ -8,3 +8,5 @@ ctci-merge-sort: Update merge sort solution
 
 min-max-riddle_
 
+matrix - O(n) solution
+
