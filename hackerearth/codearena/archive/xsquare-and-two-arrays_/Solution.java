@@ -12,39 +12,31 @@ public class Solution {
         int Q = in.nextInt();
 
         int[] A = new int[n];
-        long[] preAe = new long[n];
-        long[] preAo = new long[n];
         int[] B = new int[n];
-        long[] preBe = new long[n];
-        long[] preBo = new long[n];
-        for (int i = 0; i < n; ++i) {
-            A[i] = in.nextInt();
-            if (i % 2 == 0) preAe[i] += (i > 1 ? preAe[i - 2] : 0) + A[i];
-            else preAo[i] += (i > 1 ? preAo[i - 2] : 0) + A[i];
+        long[] preA = new long[n + 1];
+        long[] preB = new long[n + 1];
+
+        for (int i = 0; i < n; ++i) A[i] = in.nextInt();
+        for (int i = 0; i < n; ++i) B[i] = in.nextInt();
+
+        for (int i = 1; i < n; i+=2) {
+            A[i] = A[i] ^ B[i];
+            B[i] = A[i] ^ B[i];
+            A[i] = A[i] ^ B[i];
         }
 
-        for (int i = 0; i < n; ++i) {
-            B[i] = in.nextInt();
-            if (i % 2 == 0) preBe[i] += (i > 1 ? preBe[i - 2] : 0) + B[i];
-            else preBo[i] += (i > 1 ? preBo[i - 2] : 0) + B[i];
+        for (int i = 1; i <= n; ++i) {
+            preA[i] = preA[i-1] + A[i-1];
+            preB[i] = preB[i-1] + B[i-1];
         }
 
         while (Q -- > 0) {
             int type = in.nextInt();
-            int L = in.nextInt() - 1;
-            int R = in.nextInt() - 1;
-            int evenL = L % 2 == 0 ? (L - 2) : (L - 1);
-            int oddL = L % 2 == 0 ? (L - 1) : (L - 2);
-            int evenR = R % 2 == 0 ? R : (R - 1);
-            int oddR = R % 2 == 0 ? (R - 1) : R;
+            int L = in.nextInt();
+            int R = in.nextInt();
 
-            if (type == 1) {
-                if (L % 2 == 0) System.out.println(preAe[evenR] - (evenL < 0 ? 0 : preAe[evenL]) + preBo[oddR] - (oddL < 0 ? 0 : preBo[oddL]));
-                else System.out.println(preAo[oddR] - (oddL < 0 ? 0 : preAo[oddL]) + preBe[evenR] - (evenL < 0 ? 0 : preBe[evenL]));
-            } else {
-                if (L % 2 == 0) System.out.println(preBe[evenR] - (evenL < 0 ? 0 : preBe[evenL]) + preAo[oddR] - (oddL < 0 ? 0 : preAo[oddL]));
-                else System.out.println(preBo[oddR] - (oddL < 0 ? 0 : preBo[oddL]) + preAe[evenR] - (evenL < 0 ? 0 : preAe[evenL]));
-            }
+            if (type % 2 == L % 2) System.out.println(preA[R] - preA[L - 1]);
+            else System.out.println(preB[R] - preB[L - 1]);
         }
     }
 }
