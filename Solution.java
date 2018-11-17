@@ -1,8 +1,9 @@
 import java.util.*;
+import java.io.*;
 
 public class Solution {
     private InputReader in = new InputReader(System.in);
-    private PrintWriter out = new PrintWriter(System.ou);
+    private PrintWriter out = new PrintWriter(System.out);
  
     public static void main(String[] args) {
         Solution solution = new Solution();
