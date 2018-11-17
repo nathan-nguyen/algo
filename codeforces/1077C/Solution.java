@@ -10,12 +10,12 @@ public class Solution {
 
     private void solve() {
         int n = in.nextInt();
-        int[] a = new int[n];
-        HashMap<Integer, Integer> map = new HashMap<>();
+        long[] a = new long[n];
+        HashMap<Long, Integer> map = new HashMap<>();
 
-        int total = 0;
+        long total = 0;
         for (int i = 0; i < n; ++i) {
-            a[i] = in.nextInt();
+            a[i] = in.nextLong();
             map.put(a[i], map.getOrDefault(a[i], 0) + 1);
             total += a[i];
         }

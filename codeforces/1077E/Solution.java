@@ -24,16 +24,16 @@ public class Solution {
         int result = 0, min = 0, count = 2;
         
         for (int i: list) {
-//            System.out.println(result + " " + min + " " + count);
             int k = map.get(i);
             if (result == 0) {
                 result = k;
                 min = k;
-            } else if (k * 2 >= min) {
-                result = Math.max(result, (min / 2) * ((1 << count) - 1));
-                ++count;
-                min = min  / 2;
-            }
+                continue;
+            } 
+            if (k * 2 >= min) min = min / 2;
+            else min = k;
+            result = Math.max(result, min * ((1 << count) - 1));
+            ++count;
         }
         System.out.println(result);
     }
