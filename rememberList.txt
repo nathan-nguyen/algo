@@ -58,4 +58,6 @@ new-year-chaos__ - hackerrank
 count-total-set-bits - geeksforgeeks - Try O(1) solution
 
 Cutting Out - 1077D_ - codeforces
+find-the-shortest-superstring - leetcode
+1077F1_ - codeforces
 
