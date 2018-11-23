@@ -39,6 +39,8 @@ public class Solution {
     }
 
     private void solve() {
-
+        int n = in.nextInt();
+        int s = in.nextInt();
+        System.out.println(s / n + ((s % n == 0) ? 0 : 1));
     }
 }

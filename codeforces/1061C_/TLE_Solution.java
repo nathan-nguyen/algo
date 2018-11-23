@@ -38,7 +38,21 @@ public class Solution {
         }
     }
 
-    private void solve() {
+    private static int MOD = 1000_000_007;
 
+    private void solve() {
+        int n = in.nextInt();
+        int[] a = new int[n];
+        for (int i = 0; i < n; ++i) a[i] = in.nextInt();
+        int[] dp = new int[n+1];
+        dp[0] = 1;
+        for (int i = 0; i < n; ++i) {
+            for (int j = n; j >= 1; --j) if (a[i] % j == 0) {
+                dp[j] = (dp[j] + dp[j-1]) % MOD;
+            }
+        }
+        long total = 0;
+        for (int i = 1; i <= n; ++i) total = (total + dp[i]) % MOD;
+        System.out.println(total);
     }
 }

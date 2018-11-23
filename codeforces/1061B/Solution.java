@@ -39,6 +39,22 @@ public class Solution {
     }
 
     private void solve() {
+        int n = in.nextInt();
+        int m = in.nextInt();
+        int[] a = new int[n];
+        long total = 0;
+        for (int i = 0; i < n; ++i) {
+            a[i] = in.nextInt();
+            total += a[i];
+        }
+        Arrays.sort(a);
+        // a[i] > 0
+        long count = a[0] - 1;
+        for (int i = 1; i < n; ++i) {
+            if (a[i] > a[i-1]) count += a[i] - a[i-1] - 1;
+            else if (a[i] == a[i-1]) count = Math.max(0, count - 1);
+        }
 
+        System.out.println(total - count - n); 
     }
 }
