@@ -113,3 +113,22 @@ When the graph contains loops **and** parent value depends on child value, using
 
 If the graph is DAG, it is safe to use DFS.
 
+// -------------------------------------------------------------------------------- //
+
+13. Rectangle overlap
+
+(x1, y1), (x2, y2)  ; x1 <= x2 ; y1 <= y2
+(x3, y3), (x4, y4)  ; x3 <= x4 ; y3 <= y4
+
+Overlap rectangle:
+x5 = Math.max(x1, x3)
+y5 = Math.max(y1, y3)
+x6 = Math.max(x5, Math.min(x2, x4))
+y6 = Math.max(x6, Math.min(y2, y4))
+
+// -------------------------------------------------------------------------------- //
+
+14. Complexity to find all divisors of n is O(sqrt(n))
+
+for (int i = 1; i * i <= n) if (n % i == 0), we have i and n / i
+
