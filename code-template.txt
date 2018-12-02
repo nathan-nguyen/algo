@@ -211,10 +211,7 @@ abstract class SegmentTree {
 
 private List<String> permutation(List<String> ol) {
     List<String> result = new ArrayList<>();
-    if (ol.size() == 0) {
-        result.add("");
-        return result;
-    }   
+    if (ol.size() == 0) result.add("");
 
     for (int i = 0; i < ol.size(); ++i) {
         List<String> nl = new ArrayList<>();
