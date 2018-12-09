@@ -226,6 +226,21 @@ private List<String> permutation(List<String> ol) {
 }
 
 #*******************************************************************************
+# GET ALL PRIME FACTORS
+#*******************************************************************************
+
+List<Integer>[] primeFactor = new ArrayList[n];
+for (int i = 0; i < n; ++i) {
+	primeFactor[i] = new ArrayList<>();
+    int k = a[i];
+	for (int d = 2; d * d <= k; ++d) {
+		if (k % d == 0) primeFactor[i].add(d);
+		while (k % d == 0) k /= d;
+	}
+	if (k > 1) primeFactor[i].add(k);
+}
+
+#*******************************************************************************
 # OTHERS
 #*******************************************************************************
 
