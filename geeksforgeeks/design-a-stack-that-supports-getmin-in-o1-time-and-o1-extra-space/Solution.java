@@ -8,6 +8,7 @@ public class Solution {
 
     private void solve() throws Exception {
         MinStack minStack = new MinStack();
+        minStack.printPush(20);
         minStack.printPush(10);
         minStack.printPush(9);
         minStack.printPop();
@@ -15,6 +16,7 @@ public class Solution {
         minStack.printPush(5);
         minStack.printPop();
         minStack.printPush(3);
+        minStack.printPush(8);
         minStack.printPop();
         minStack.printPop();
         minStack.printPush(2);
@@ -39,9 +41,11 @@ public class Solution {
         private int pop() throws Exception {
             if (stack.size() == 0) throw new Exception("Stack is empty");
 
-            int k = stack.pop();
-            if (k < min) min = 2 * min - k;
-            return (min + k) / 2;
+            if (stack.peek() < min) {
+                min = 2 * min - stack.peek();
+                return (min + stack.pop()) / 2;
+            }
+            return stack.pop();
         }
 
         private int getMin() {
