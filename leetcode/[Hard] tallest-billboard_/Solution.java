@@ -13,8 +13,8 @@ class Solution {
         for (int i = 0; i < n; ++i) {
             for (int j = 0; j < 2 * sum + 1; ++j) cur[j] = dp[j];
             for (int j = 0; j < 2 * sum + 1; ++j) {
-                if (j >= a[i]) dp[j] = Math.max(cur[j], cur[j - a[i]] >= 0 ? cur[j-a[i]] + a[i] : Integer.MIN_VALUE);
-                if (j + a[i] < 2 * sum + 1) dp[j] = Math.max(dp[j], Math.max(cur[j], cur[j + a[i]]));
+                if (j >= a[i]) dp[j] = Math.max(dp[j], cur[j - a[i]] >= 0 ? cur[j-a[i]] + a[i] : Integer.MIN_VALUE);
+                if (j + a[i] < 2 * sum + 1) dp[j] = Math.max(dp[j], cur[j + a[i]]);
             }
         }
         return dp[sum];
