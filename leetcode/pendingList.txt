@@ -23,7 +23,7 @@ couples-holding-hands - editorial - submit solution
 strange-printer - editorial - submit solution
 merge-intervals - read discussion and other submission
 peeking-iterator_ - O(1) memory solution
-candy_
+candy_ - Approach 4
 find-k-th-smallest-pair-distance_
 maximal-rectangle_
 scramble-string_
