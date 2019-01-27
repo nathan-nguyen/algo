@@ -23,7 +23,7 @@ class Solution {
             }
             k = next;
             order.add(k);
-            map.put(k, order.size() - 1);
+            map.put(k, j);
         }
 
         for (int i = 0; i < 8; ++i) {
