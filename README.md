@@ -132,3 +132,11 @@ y6 = Math.max(x6, Math.min(y2, y4))
 
 for (int i = 1; i * i <= n) if (n % i == 0), we have i and n / i
 
+// -------------------------------------------------------------------------------- //
+
+15. Count connected component
+
+- Use DFS - O(n)
+
+- Use Union-Find - O(n log n)
+
