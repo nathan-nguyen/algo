@@ -5,6 +5,29 @@ Basic stuffs:
 1. Check for overflow before submitting.
 
 // -------------------------------------------------------------------------------- //
+
+Basic approaches
+- One by one Left to Right
+- One by one Right to Left
+- All left to right
+- All right to left
+
+Greedy:
+- Sort, stack, queue, deque
+
+Memory:
+- HashMap, HashSet
+
+Data structure:
+- Priority Queue, TreeHashMap, Trie, Fenwick Tree (BIT), Segment Tree
+
+Graph:
+- (DFS, BFS), (Bellman-Ford, Dijkstra, Floyd-Warshall, Johnson), (Prim, Kruskal), Union-Find
+
+Methods:
+- Brute Forces, Greedy, DP
+
+// -------------------------------------------------------------------------------- //
 1. Line equation
 
 x1 = ?  ;  y1 = ? ;    // First diagonal point

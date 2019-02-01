@@ -3,15 +3,18 @@ class Solution {
         if (a.length == 0) return 0;
         int n = a.length;
 
-        Integer[] b = new Integer[n];
-        for (int i = 0; i < n; ++i) b[i] = i;
-        Arrays.sort(b, (u, v) -> Integer.compare(a[u], a[v]));
+        Stack<Integer> stack = new Stack<>();
+        for (int i = 0; i < n; ++i) if (stack.isEmpty() || a[stack.peek()] > a[i]) stack.push(i);
+
         int max = 0;
-        int min = b[0];
-        for (int i = 0; i < n; ++i) {
-            min = Math.min(min, b[i]);
-            max = Math.max(max, b[i] - min);
+        for (int i = n - 1; i >= 0; --i) {
+            while (!stack.isEmpty()) {
+                if (a[i] < a[stack.peek()]) break;
+                max = Math.max(max, i - stack.pop());
+            }
+            if (stack.isEmpty()) break;
         }
         return max;
     }
 }
+
