@@ -1,7 +1,6 @@
 Solve and update the following problems (Rank by priority):
 
 recover-binary-search-tree_
-longest-substring-with-at-least-k-repeating-characters_ - editorial - template
 wiggle-subsequence_
 trapping-rain-water-ii_
 longest-increasing-subsequence_ - O(n * log n) solution
@@ -69,3 +68,5 @@ prison-cells-after-n-days - leetcode - Shorten the solution
 regions-cut-by-slashes - leetcode - Implement solution using Union Find
 
 binary-tree-cameras_
+minimum-area-rectangle-ii_
+

@@ -67,5 +67,9 @@ sliding-window-maximum__ - leetcode - 3 ways: deque, 2 stacks, TreeMap
 
 candy_ - leetcode
 
+(*) Graph
 binary-tree-cameras_ - leetcode
+
+(*) Geography
+minimum-area-rectangle-ii_ - leetcode
 
