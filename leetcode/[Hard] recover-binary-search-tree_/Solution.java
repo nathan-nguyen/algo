@@ -8,28 +8,24 @@
  * }
  */
 class Solution {
-	private TreeNode one, two, prev;
+    public void recoverTree(TreeNode root) {
+        recoverTree(root, null, null);
+        recoverTree(root, null, null);
+    }
+    
+    private void recoverTree(TreeNode root, TreeNode min, TreeNode max) {
+        if (root == null) return;
+        if (min != null && root.val < min.val) swap(root, min);
+        if (max != null && root.val > max.val) swap(root, max);
+        recoverTree(root.left, min, root);
+        recoverTree(root.right, root, max);
+        if (min != null && root.val < min.val) swap(root, min);
+        if (max != null && root.val > max.val) swap(root, max);
+    }
 
-	public void recoverTree(TreeNode root) {
-		one = two = null;
-		prev = new TreeNode(Integer.MIN_VALUE);
-
-		recoverTreeNode(root);
-		one.val ^= two.val;
-		two.val ^= one.val;
-		one.val ^= two.val;
-	}
-
-	private void recoverTreeNode(TreeNode root){
-		if (root == null) return;
-
-		recoverTreeNode(root.left);
-
-		if (one == null && prev.val > root.val) one = prev;
-		if (one != null && prev.val > root.val) two = root;
-
-		prev = root;
-
-		recoverTreeNode(root.right);
-	}
+    private void swap(TreeNode nodeOne, TreeNode nodeTwo) {
+        nodeOne.val ^= nodeTwo.val;
+        nodeTwo.val ^= nodeOne.val;
+        nodeOne.val ^= nodeTwo.val;
+    }
 }
