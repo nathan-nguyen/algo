@@ -1,7 +1,6 @@
 Solve and update the following problems (Rank by priority):
 
 recover-binary-search-tree_
-wiggle-subsequence_
 trapping-rain-water-ii_
 longest-increasing-subsequence_ - O(n * log n) solution
 word-break_

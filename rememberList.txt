@@ -73,3 +73,8 @@ binary-tree-cameras_ - leetcode
 (*) Geography
 minimum-area-rectangle-ii_ - leetcode
 
+(*) Greedy
+wiggle-subsequence_
+
+longest-increasing-subsequence_ - O(n * log n) solution
+
