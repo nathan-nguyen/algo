@@ -42,7 +42,7 @@ freedom-trail_ - Try to solve by using dfs
 
 stickers-to-spell-word - Read other solution from editorial and discussion
 
-split-array-largest-sum__ - Binary search, submit solution
+split-array-largest-sum_ - Binary search approach
 
 count-the-repetitions_
 132-pattern_ - Editorial - Discussion
