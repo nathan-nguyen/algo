@@ -1,17 +1,19 @@
 class Solution {
-	public boolean wordBreak(String s, List<String> wordDict) {
-		HashSet<String> set = new HashSet<>(wordDict);
+    public boolean wordBreak(String s, List<String> wordDict) {
+        Set<String> failedSet = new HashSet<>();
+        Set<String> set = new HashSet<>();
+        for (String e: wordDict) set.add(e);
+        return wordBreak(s, set, failedSet);
+    }
 
-		boolean[] dp = new boolean[s.length() + 1];
-		dp[0] = true;
+    private boolean wordBreak(String s, Set<String> set, Set<String> failedSet) {
+        if (s.length() == 0 || set.contains(s)) return true;
+        if (failedSet.contains(s)) return false;
 
-		for (int i = 0; i <= s.length(); ++i){
-			if (!dp[i]) continue;
-			for (int j = i + 1; j <= s.length(); ++j){
-				if (dp[j]) continue;
-				dp[j] = set.contains(s.substring(i, j));
-			}
-		}
-		return dp[s.length()];
-	}
+        for (int i = 1; i < s.length(); ++i ) {
+            if (set.contains(s.substring(0, i)) && wordBreak(s.substring(i), set, failedSet)) return true;
+        }
+        failedSet.add(s);
+        return false; 
+    }
 }

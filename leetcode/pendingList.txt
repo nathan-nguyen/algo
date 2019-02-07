@@ -2,7 +2,6 @@ Solve and update the following problems (Rank by priority):
 
 recover-binary-search-tree_
 trapping-rain-water-ii_
-longest-increasing-subsequence_ - O(n * log n) solution
 word-break_
 sum-of-distances-in-tree_
 Distinct Subsequences - think about init dp array

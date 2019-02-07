@@ -69,6 +69,7 @@ candy_ - leetcode
 
 (*) Graph
 binary-tree-cameras_ - leetcode
+sum-of-distances-in-tree_ - leetcode
 
 (*) Geography
 minimum-area-rectangle-ii_ - leetcode
