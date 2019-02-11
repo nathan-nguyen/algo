@@ -1,44 +1,45 @@
 import java.util.Scanner;
 
 public class Solution {
-	public static void main(String[] args){
-		Scanner in = new Scanner(System.in);
-		int m = in.nextInt();
-		int s = in.nextInt();
+    public static void main(String[] args) {
+        Solution solution = new Solution();
+        solution.solve();
+    }
 
-		solve(m, s);
-	}
+    private void solve() {
+        Scanner in = new Scanner(System.in);
+        int k = in.nextInt();
+        int s = in.nextInt();
+        if (9 * k < s || (k > 1 && s == 0)) {
+            System.out.println("-1 -1");
+            return;
+        }
+        if (k == 1 && s == 0) {
+            System.out.println("0 0");
+            return;
+        }
 
-	private static void solve(int m, int s){
-		if (m * 9 < s || (s == 0 && m > 1)){
-			System.out.println("-1 -1");
-			return;
-		}
+        System.out.println(getMin(k, s) + " " + getMax(k, s));
+    }
 
-		if (m == 1 && s == 0) {
-			System.out.println("0 0");
-			return;
-		}
+    private String getMax(int k, int s) {
+        StringBuilder max = new StringBuilder();
+        for (int i = 0; i < s / 9; ++i) max.append(9);
+        if (s % 9 != 0) max.append(s % 9);
+        for (int i = s / 9 + (s % 9 == 0 ? 0 : 1); i < k; ++i) max.append(0);
+        return max.toString();
+    }
 
-		StringBuilder max = new StringBuilder();
-		for (int i = 0; i < s / 9; ++i) max.append(9);
-		if (s % 9 != 0) max.append(s % 9);
-		for (int i = s / 9 + (s % 9 == 0 ? 0 : 1); i < m; ++i) max.append(0);
-		
-		StringBuilder min = new StringBuilder();
-
-		int z = (s - 1) / 9;
-		int k = (s - 1) % 9;
-
-		if (z + (k == 0 ? 0 : 1) < m) min.append(1);
-		else ++k;
-
-		for (int i = 0; i < m - 1 - z - (k == 0 ? 0 : 1); ++i) min.append(0);
-
-		if (k != 0) min.append(k);
-
-		for (int i = 0; i < z; ++i) min.append(9);
-		
-		System.out.println(min.toString() + " " + max.toString());
-	}
+    private String getMin(int k, int s) {
+        StringBuilder min = new StringBuilder();
+        int c = 9 * (k - 1) < s ? 0 : 1;
+        int x = (s - c) % 9;
+        int a = (s - c) / 9;
+        int b = k - (c == 1 ? 1 : 0) - a - (x == 0 ? 0 : 1);
+        if (c == 1) min.append(1);
+        for (int i = 0; i < b; ++i) min.append(0);
+        if (x != 0) min.append(x);
+        for (int i = 0; i < a; ++i) min.append(9);
+        return min.toString();
+    }
 }
