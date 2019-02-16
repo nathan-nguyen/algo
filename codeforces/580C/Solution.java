@@ -1,57 +1,43 @@
-import java.util.Scanner;
 import java.util.ArrayList;
-import java.util.HashSet;
+import java.util.List;
+import java.util.Scanner;
 
 public class Solution {
-	static class Vertex{
-		int hasCat;
-		HashSet<Vertex> neighbor;
-		int parentCatNo;
-		boolean isVisited = false;
+    public static void main(String[] args) {
+        Solution solution = new Solution();
+        solution.solve();
+    }
 
-		public Vertex(int hasCat){
-			this.hasCat = hasCat;
-			this.neighbor = new HashSet<>();
-			parentCatNo = 0;
-		}
-	}
+    private void solve() {
+        Scanner in = new Scanner(System.in);
+        int n = in.nextInt();
+        int m = in.nextInt();
 
-	public static void main(String[] args){
-		Scanner in = new Scanner(System.in);
-		int n = in.nextInt();
-		int m = in.nextInt();
+        List<List<Integer>> tree = new ArrayList<>();
+        for (int i = 0; i < n; ++i) tree.add(new ArrayList<>());
 
-		ArrayList<Vertex> vList = new ArrayList<>();
-		for (int i = 0; i < n; ++i) vList.add(new Vertex(in.nextInt()));
+        boolean[] status = new boolean[n];
+        for (int i = 0; i < n; ++i) status[i] = in.nextInt() == 1;
 
-		for (int i = 0; i < n - 1; ++i){
-			int left = in.nextInt();
-			int right = in.nextInt();
-			vList.get(left-1).neighbor.add(vList.get(right-1));
-			vList.get(right-1).neighbor.add(vList.get(left-1));
-		}
+        for (int i = 0; i < n - 1; ++i) {
+            int a = in.nextInt() - 1;
+            int b = in.nextInt() - 1;
+            tree.get(a).add(b);
+            tree.get(b).add(a);
+        }
 
-		ArrayList<Vertex> queue = new ArrayList<>();
-		queue.add(vList.get(0));
+        tree.get(0).add(-1);
+        System.out.println(dfs(tree, -1, 0, 0, status, m));
+    }
 
-		int count = 0;
-		while (queue.size() > 0){
-			Vertex v = queue.remove(0);
-			v.isVisited = true;
-			int parentCatNo = (v.hasCat > 0) ? v.parentCatNo + v.hasCat : 0;
-			if (parentCatNo > m) continue;
-
-			int localCount = 0;
-			for (Vertex neighbor: v.neighbor){
-				if (!neighbor.isVisited){
-					++localCount;
-					queue.add(neighbor);
-					neighbor.parentCatNo = parentCatNo;
-				}
-			}
-			if (localCount == 0) ++count;
-		}
-
-		System.out.println(count);
-	}
+    private int dfs(List<List<Integer>> tree, int parent, int root, int current, boolean[] status, int m) {
+        if (status[root] && current + 1 > m) return 0;
+        if (tree.get(root).size() == 1) return 1;
+        int total = 0;
+        for (int child: tree.get(root)) {
+            if (child == parent) continue;
+            total += dfs(tree, root, child, status[root] ? current + 1 : 0, status, m);
+        }
+        return total;
+    }
 }
