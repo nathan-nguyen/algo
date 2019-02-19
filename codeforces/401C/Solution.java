@@ -1,37 +1,37 @@
 import java.util.Scanner;
 
 public class Solution {
-	public static void main(String[] args){
-		Scanner in = new Scanner(System.in);
+    public static void main(String[] args) {
+        System.out.println(new Solution().solve());
+    }
 
-		int n = in.nextInt();
-		int m = in.nextInt();
+    private String solve() {
+        Scanner in = new Scanner(System.in);
+        int n = in.nextInt();
+        int m = in.nextInt();
 
-		if (n > m + 1 || 2 * n + 2 < m) {
-			System.out.println(-1);
-			return;
-		}
+        if (m < n - 1 || m > 2 * n + 2) return "-1";
 
-		StringBuilder result = new StringBuilder();
-
-		// 010 - 0101
-		if ( m == n - 1 || m == n){
-			for (int i = 0; i < m; ++i) result.append("01");
-			if (m == n - 1) result.append(0);
-		}
-
-		else if (m == 2 * n + 2) {
-			for (int i = 0; i < n; ++i) result.append("110");
-			result.append("11");
-		}
-
-		// 10101 - 110101
-		else if ( m >= n + 1) {
-			int k = m - n - 1;
-			for (int i = 0; i < k ; ++i) result.append("110");
-			for (int i = 0; i < m - 2 * k - 1; ++i) result.append("10");
-			result.append(1);
-		}
-		System.out.println(result);
-	}
+        StringBuilder sb = new StringBuilder();
+        if (m == n - 1) {
+            for (int i = 0; i < m; ++i) sb.append("01");
+            sb.append("0");
+        }
+        else if (m == 2 * n + 2) {
+            for (int i = 0; i < n; ++i) sb.append("110");
+            sb.append("11");
+        }
+        else {
+            while (n > 0 && m != n) {
+                sb.append("110");
+                m -= 2;
+                n -= 1;
+            }
+            for (int i = 0; i < n; ++i) sb.append("10");
+            m -= n;
+            if (m > 0) sb.append(1);
+        }
+        return sb.toString();
+    }
 }
+
