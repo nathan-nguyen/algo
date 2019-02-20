@@ -1,33 +1,30 @@
+import java.util.HashSet;
 import java.util.Scanner;
-import java.util.Arrays;
+import java.util.Set;
 
 public class Solution {
-	public static void main(String[] args){
-		Scanner in = new Scanner(System.in);
+        public static void main(String[] args) {
+                System.out.println(new Solution().solve());
+        }
 
-		int n = in.nextInt();
-		int m = in.nextInt();
+        private String solve() {
+                Scanner in = new Scanner(System.in);
+                int n = in.nextInt();
+                int m = in.nextInt();
 
-		int[] range = new int[n + 2];
-		range[0] = 0;
-		range[n+1] = 1000000001;
+                Set<Integer> set = new HashSet<>();
+                for (int i = 0; i < n; ++i) set.add(in.nextInt());
 
-		for (int i = 1; i <= n; ++i) range[i] = in.nextInt();
-
-		Arrays.sort(range);
-
-		int count = 0;
-		StringBuilder result = new StringBuilder();
-		for (int i = 1; i < n + 2; ++i){
-			for (int j = range[i-1] + 1; j < range[i]; ++j){
-				if (j > m) break;
-				result.append(j);
-				result.append(" ");
-				++count;
-				m -= j;
-			}
-		}
-		System.out.println(count);
-		System.out.println(result);
-	}
+                int count = 0;
+                StringBuilder sb = new StringBuilder();
+                for (int i = 1; i <= 1000_000_000; ++i) {
+                        if (set.contains(i)) continue;
+                        if (m < i) return count + ((sb.length() > 0) ? "\n" + sb.toString().substring(1) : "");
+                        ++count;
+                        m -= i;
+                        sb.append(" " + i);
+                }
+                return count + ((sb.length() > 0) ? "\n" + sb.toString().substring(1) : "");
+        }
 }
+
