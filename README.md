@@ -163,3 +163,9 @@ for (int i = 1; i * i <= n) if (n % i == 0), we have i and n / i
 
 - Use Union-Find - O(n log n)
 
+// -------------------------------------------------------------------------------- //
+
+16. Count number of pairs [l, r] in array
+
+- Find the relation betweek [0, l-1] and [0, r]
+
