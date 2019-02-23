@@ -52,6 +52,8 @@ For the problem of removing one-by-one vertex from graph, we can solve by revers
 
 Example: Codeforces 295B
 
+- Remove vertices such that the remaining vertices still form a connected graph. This is a simple dfs problem.
+
 // -------------------------------------------------------------------------------- //
 
 3. Weighted Quick Union
