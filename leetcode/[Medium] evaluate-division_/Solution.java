@@ -1,40 +1,49 @@
 class Solution {
-	/** No division by zero and no contradiction - All values are positive
-	 */
-	
-	public double[] calcEquation(String[][] equations, double[] values, String[][] queries) {
-		HashMap<String, List<String>> nodeMap = new HashMap<>();
-		HashMap<String, Double> edgeMap = new HashMap<>();
+    public double[] calcEquation(String[][] e, double[] v, String[][] q) {
+        int n = v.length;
+        double[] result = new double[q.length];
 
-		for (int i = 0; i < equations.length; ++i) {
-			updateMap(equations[i][0], equations[i][1], values[i], nodeMap, edgeMap);
-			updateMap(equations[i][1], equations[i][0], 1 / values[i], nodeMap, edgeMap);
-		}
+        Set<String> zero = new HashSet<>();
+        Map<String, List<String>> g = new HashMap<>();
+        Map<String, Double> map = new HashMap<>();
+        for (int i = 0; i < n; ++i) {
+            String a = e[i][0];
+            String b = e[i][1];
+            if (v[i] == 0) {
+                zero.add(a);
+                continue;
+            }
 
-		double[] result = new double[queries.length];
-		for (int i = 0; i < queries.length; ++i) {
-			result[i] = dfs(queries[i][0], queries[i][1], nodeMap, edgeMap, new HashSet<>());
-		}
-		return result;
-	}
+            List<String> al = g.getOrDefault(a, new ArrayList<>());
+            List<String> bl = g.getOrDefault(b, new ArrayList<>());
+            al.add(b);
+            bl.add(a);
+            g.put(a, al);
+            g.put(b, bl);
+            map.put(a + "_" + b, v[i]);
+            map.put(b + "_" + a, 1 / v[i]);
+        }
 
-	private double dfs(String a, String b, HashMap<String, List<String>> nodeMap, HashMap<String, Double> edgeMap, HashSet<String> set) {
-		if (!nodeMap.containsKey(a) || set.contains(a)) return -1;
-		if (a.equals(b)) return 1;
+        for (int i = 0; i < q.length; ++i) {
+            String start = q[i][0];
+            String end = q[i][1];
+            if (zero.contains(start)) result[i] = 0;
+            else result[i] = dfs(start, end, g, map, new HashSet<>());
+        }
+        return result;
+    }
 
-		set.add(a);
-		for (String c: nodeMap.get(a)) {
-			double result = dfs(c, b, nodeMap, edgeMap, set);
-			if (result > 0) return result * edgeMap.get(a + "_" + c);
-		}
+    private static final List<String> EMPTY_LIST = new ArrayList<>();
 
-		return -1;
-	}
-
-	private void updateMap(String a, String b, double value, HashMap<String, List<String>> nodeMap, HashMap<String, Double> edgeMap) {
-		List<String> neighborList = nodeMap.getOrDefault(a, new ArrayList<>());
-		neighborList.add(b);
-		nodeMap.put(a, neighborList);
-		edgeMap.put(a + "_" + b, value);
-	}
+    private double dfs(String cur, String end, Map<String, List<String>> g, Map<String, Double> map, Set<String> set) {
+        if (!g.containsKey(cur) || set.contains(cur)) return -1;
+        if (cur.equals(end)) return 1;
+        set.add(cur);
+        for (String next: g.getOrDefault(cur, EMPTY_LIST)) {
+            double result = dfs(next, end, g, map, set);
+            if (result != -1) return map.get(cur + "_" + next) * result;
+        }
+        set.remove(cur);
+        return -1;
+    }
 }
