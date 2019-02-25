@@ -9,41 +9,22 @@
  */
 class Solution {
     public TreeNode insertIntoMaxTree(TreeNode root, int val) {
-        List<Integer> list = new ArrayList<>();
-        traverse(root, list);
-        list.add(val);
-        int[] a = new int[list.size()];
-        for (int i = 0; i < list.size(); ++i) a[i] = list.get(i);
-        return constructMaximumBinaryTree(a);
-    }
-    
-    private void traverse(TreeNode root, List<Integer> list) {
-        if (root == null) return;
-        traverse(root.left, list);
-        list.add(root.val);
-        traverse(root.right, list);
-    }
-    
-    private TreeNode constructMaximumBinaryTree(int[] nums) {
-        return construct(nums, 0, nums.length);
-    }
-    
-    private TreeNode construct(int[] a, int l, int r) {
-        if (l == r)
-            return null;
-        int max = max(a, l, r);
-        TreeNode root = new TreeNode(a[max]);
-        root.left = construct(a, l, max);
-        root.right = construct(a, max + 1, r);
+        TreeNode node = new TreeNode(val);
+        if (root == null || root.val < val) {
+            node.left = root;
+            return node;
+        }
+        traverse(root, node);
         return root;
     }
-    
-    private int max(int[] a, int l, int r) {
-        int max = l;
-        for (int i = l; i < r; i++) {
-            if (a[max] < a[i]) max = i;
+
+    private void traverse(TreeNode root, TreeNode node) {
+        if (root.right == null) root.right = node;
+        else if (root.right.val < node.val) {
+            node.left = root.right;
+            root.right = node;
         }
-        return max;
+        else traverse(root.right, node);
     }
 }
 

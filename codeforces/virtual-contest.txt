@@ -7,4 +7,6 @@ Codeforces Beta Round #9 (Div. 2 Only)
 Codeforces Round #490 (Div. 3)
 Codeforces Round #494 (Div. 3) 
 Codeforces Round #496 (Div. 3)
+Codeforces Round #539 (Div. 2)
+Codeforces Round #542 (Div. 2)
 
