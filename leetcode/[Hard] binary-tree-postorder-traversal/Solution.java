@@ -8,18 +8,18 @@
  * }
  */
 class Solution {
-	private List<Integer> result = new ArrayList<>();
-	public List<Integer> postorderTraversal(TreeNode root) {
-		result.clear();
-
-		traverse(root);
-		return result;
-	}
-
-	private void traverse(TreeNode root){
-		if (root == null) return;
-		traverse(root.left);
-		traverse(root.right);
-		result.add(root.val);
-	}
+    public List<Integer> postorderTraversal(TreeNode root) {
+        Stack<Integer> stack = new Stack<>();
+        Stack<TreeNode> main = new Stack<>();
+        main.push(root);
+        while (!main.isEmpty()) {
+            TreeNode node = main.pop();
+            if (node == null) continue;
+            stack.push(node.val);
+            main.push(node.left);
+            main.push(node.right);
+        }
+        Collections.reverse(stack);
+        return stack;
+    }
 }

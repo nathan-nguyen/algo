@@ -13,18 +13,17 @@ class Solution {
                 dp[i - j][i + 1 + j] = 0;
             }
         }
-        return minCut(s, 0, n - 1, dp);
+        return minCut(0, n - 1, dp);
     }
 
-    private int minCut(String s, int start, int end, int[][] dp) {
+    private int minCut(int start, int end, int[][] dp) {
         if (dp[start][end] >= 0) return dp[start][end];
         int min = Integer.MAX_VALUE;
         for (int i = start; i < end; ++i) {
-            min = Math.min(min, 1 + minCut(s, start, i, dp) + minCut(s, i + 1, end, dp));
+            min = Math.min(min, 1 + minCut(start, i, dp) + minCut(i + 1, end, dp));
         }
         dp[start][end] = min;
         return min;
     }
 }
-
 
