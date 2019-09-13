@@ -175,5 +175,5 @@ for (int i = 1; i * i <= n) if (n % i == 0), we have i and n / i
 
 17. Given an array a length n. Let's say dp[i] is the answer for the first ith elements.
 
-One approach which has complexity of O(n*n) is that compare dp[i] with dp[i-k] for k: 0 -> i and find (a[k] to a[i]) condition. Because dp[i-k] is always the answer for first i-k elements.
+One approach which has complexity of O(n*n) is that compare dp[i] with dp[k] for k: [0 -> i) and find (a[k+1] to a[i]) condition. Because dp[i-k] is always the answer for first i-k elements.
 
