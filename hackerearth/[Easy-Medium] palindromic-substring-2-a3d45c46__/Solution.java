@@ -17,21 +17,28 @@ public class Solution {
     }
 
     private int search(String s, int k) {
+        if (!search(s, k, s.length())) return -1;
+        int left = k, right = s.length() - 1;
+        while (left < right) {
+            int mid = (left + right) / 2;
+            if (search(s, k, mid)) right = mid;
+            else left = mid + 1;
+        }
+        return left;
     }
 
     private boolean search(String s, int k, int x) {
-        int[] count = new int[n];
+        int[] count = new int[26];
         for (int i = 0; i < x; ++i) ++count[s.charAt(i) - 'a'];
-        int odd = 0, total = 0;
-        for (int i = 0; i < n; ++i) {
+        int odd = 0;
+        for (int i = 0; i < 26; ++i) {
             if (count[i] % 2 == 1) ++odd;
         }
-        // if (odd > 0) --> x - odd + 1;
-        // else --> x
 
-        if (total >= k) return true;
+        if (verify(x, odd, k)) return true;
+
         for (int i = x; i < s.length(); ++i) {
-            --count[charAt(i-x) - 'a'];
+            --count[s.charAt(i-x) - 'a'];
             if (count[s.charAt(i-x) - 'a'] % 2 == 0) --odd;
             else ++odd;
 
@@ -39,10 +46,12 @@ public class Solution {
             if (count[s.charAt(i) - 'a'] % 2 == 1) ++odd;
             else --odd;
 
-            if (odd > 0 && x - odd + 1 >= k) return true;
-            else if (odd == 0 && x >= k) return true;
+            if (verify(x, odd, k)) return true;
         }
         return false;
     }
 
+    private boolean verify(int total, int odd, int k) {
+        return (odd == 0 && total >= k) || (odd > 0 && total - odd + 1 >= k);
+    }
 }
