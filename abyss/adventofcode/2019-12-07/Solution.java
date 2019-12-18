@@ -49,9 +49,8 @@ public class Solution {
 
     class Amplifier {
         private int config;
+        private int inputCount;
         private int[] a = new int[1000];
-        private Stack<Integer> stack = new Stack<>();
-        private boolean loadedConfiguration = false;
 
         private int p = 0;
 
@@ -61,13 +60,6 @@ public class Solution {
         }
 
         private int run(int lastResult) throws Exception {
-            stack.push(lastResult);
-            if (!loadedConfiguration) {
-                stack.push(config);
-                loadedConfiguration = true;
-            }
-            
-
             while (p < a.length) {
                 int number = a[p];
                 int code = a[p] % 100;
@@ -90,7 +82,9 @@ public class Solution {
                 }
                 else if (code == 3) {
                     if (mode[0] != 0) System.out.println("Error 3");
-                    a[a[p + 1]] = stack.pop();
+                    if (inputCount == 0) a[a[p + 1]] = config;
+                    else a[a[p + 1]] = lastResult;
+                    ++inputCount;
                     p += 2;
                 }
                 else if (code == 4) {
