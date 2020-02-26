@@ -2,7 +2,7 @@
 
 Problem: Given array a size n with O(1), shift element d positions. For example a[i] -> a[(i + d) % n]
 
-First thinking:
+## First thought
 
 There would be k swapping cycles. 0 < k < n
 
@@ -19,17 +19,13 @@ Two swapping cycles cannot have common element. Therefore the number of cycles a
 - The number of cycles are: 3
 
 
-Second thinking: Juggling algorithm proof
+## Second thought: Juggling algorithm proof
+
+if n % d == 0 then number of cycles is d.
+
+Find lowest array b size s that s % n == 0 and s % d == 0, therefore s = lcm(n, d) = n * d / gcd(n, d) and number of cycles for s array is d.
 
 LCM: Lowest common multiple
 
-d cycles if n % d == 0;
-
-Gradually add d / gcd(n,d) number of consecutive arrays with n size right after each other, there would be d cycles.
-
-Let f(x) = (x * d) % n
-
-The answer would be min of f(x) with 0 < x < n / gcd(n, d)
-
-TBU
+Array b is actually d / gcd(n, d) of consecutive arrays a, and it contains d cycles. Therefore, each array a will contain: d / (d / gcd(n, d)) = gcd(n, d) cycles.
 
