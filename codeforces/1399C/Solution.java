@@ -12,21 +12,22 @@ public class Solution {
         while (t-- > 0) {
             int n = in.nextInt();
             int[] a = new int[n];
-            for (int i = 0; i < n; ++i) a[i] = in.nextInt();
+            int[] m = new int[101];
+            for (int i = 0; i < n; ++i) {
+                a[i] = in.nextInt();
+                ++m[a[i]];
+            }
             int max = 0;
-            for (int i = 2; i <= 100; ++i) max = Math.max(max, solve(n, a, i));
+            for (int i = 2; i <= 100; ++i) max = Math.max(max, solve(m, i));
             System.out.println(max);
         }
     }
 
-    private int solve(int n, int[] a, int k) {
+    private int solve(int[] m, int k) {
         int result = 0;
-        int[] m = new int[101];
-        for (int e: a) ++m[e];
-        for (int i = 1; i <= k / 2; ++i) {
-            if (i * 2 == k) result += m[i] / 2;
-            else result += Math.min(m[i], m[k - i]);
-        }
+        for (int i = 1; i < k / 2; ++i) result += Math.min(m[i], m[k - i]);
+        if (k % 2 == 0) result += m[k / 2] / 2;
+        else result += Math.min(m[k / 2], m[k - k / 2]);
         return result;
     }
 }

@@ -6,49 +6,60 @@ public class Solution {
         solution.solve();
     }
 
+    private class Graph {
+        int vCount = 0;
+        List<List<Integer>> v = new ArrayList<>();
+        Map<Long, Integer> edge = new HashMap<>();
+
+        public Graph(int n) {
+            this.vCount = n;
+            for (int i = 0; i < n; ++i) v.add(new ArrayList<>());
+        }
+
+        public void addEdge(int x, int y, int c) {
+            v.get(x).add(y);
+            v.get(y).add(x);
+            long key = x < y ? x * 1000_000L + y : y * 1000_000L + x;
+            edge.put(key, c);
+        }
+
+        public int e(int x, int y) {
+            if (x == y) return 0;
+            long key = x < y ? x * 1000_000L + y : y * 1000_000L + x;
+            return edge.get(key);
+        }
+    }
+
     private void solve() {
         Scanner in = new Scanner(System.in);
         int t = in.nextInt();
         while (t-- > 0) {
             int n = in.nextInt();
             long s = in.nextLong();
-            List<List<Integer>> g = new ArrayList<>();
-            Map<Long, Integer> e = new HashMap<>();
+            Graph g = new Graph(n);
 
-            for (int i = 0; i < n; ++i) g.add(new ArrayList<>());
             for (int i = 0; i < n - 1; ++i) {
-                int a = in.nextInt() - 1;
-                int b = in.nextInt() - 1;
-                int x = in.nextInt();
-                g.get(a).add(b);
-                g.get(b).add(a);
-                addEdge(a, b, x, e);
+                int x = in.nextInt() - 1;
+                int y = in.nextInt() - 1;
+                int c = in.nextInt();
+                g.addEdge(x, y, c);
             }
-            solve(n, s, g, e);
+            solve(g, s);
         }
     }
 
-    private void addEdge(int i, int j, int l, Map<Long, Integer> e) {
-        if (i < j) e.put(i * 1000_000L + j, l);
-        else e.put(j * 1000_000L + i, l);
-    }
+    private void solve(Graph g, long s) {
+        long[] pel = new long[g.vCount];
+        int[] cc = new int[g.vCount];
+        boolean[] visited = new boolean[g.vCount];
 
-    private int getEdgeLength(int i, int j, Map<Long, Integer> e) {
-        if (i == j) return 0;
-        if (i < j) return e.get(i * 1000_000L + j);
-        return e.get(j * 1000_000L + i);
-    }
-
-    private void solve(int n, long s, List<List<Integer>> g, Map<Long, Integer> e) {
-        long[] pel = new long[n];
-        int[] cc = new int[n];
-        boolean[] visited = new boolean[n];
-        dfs(0, 0, g, e, visited, pel, cc);
+        dfs(0, 0, g, visited, pel, cc);
         long total = 0;
-        for (int i = 0; i < n; ++i) total += cc[i] * pel[i];
+        for (int i = 0; i < g.vCount; ++i) total += cc[i] * pel[i];
         int count = 0;
+
         Queue<Integer> queue = new PriorityQueue<>((u, v) -> -Long.compare((pel[u] - pel[u] / 2) * cc[u], (pel[v] - pel[v] / 2) * cc[v]));
-        for (int i = 1; i < n; ++i) queue.offer(i);
+        for (int i = 1; i < g.vCount; ++i) queue.offer(i);
         while (total > s) {
             int x = queue.poll();
             total = total - cc[x] * (pel[x] - pel[x] / 2);
@@ -59,15 +70,17 @@ public class Solution {
         System.out.println(count);
     }
 
-    private void dfs(int p, int i, List<List<Integer>> g, Map<Long, Integer> e, boolean[] visited, long[] pel, int[] cc) {
+    private void dfs(int p, int i, Graph g, boolean[] visited, long[] pel, int[] cc) {
         if (visited[i]) return;
         visited[i] = true;
-        pel[i] = getEdgeLength(p, i, e);
-        if (g.get(i).size() == 1 && i != p) {
+        pel[i] = g.e(p, i);
+
+        if (g.v.get(i).size() == 1 && p != i) {
             cc[i] = 1;
             return;
         }
-        for (int j: g.get(i)) if (j != p) dfs(i, j, g, e, visited, pel, cc);
-        for (int j: g.get(i)) if (j != p) cc[i] += cc[j];
+
+        for (int j: g.v.get(i)) dfs(i, j, g, visited, pel, cc);
+        for (int j: g.v.get(i)) if (j != p) cc[i] += cc[j];
     }
 }
