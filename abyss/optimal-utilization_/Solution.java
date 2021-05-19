@@ -22,13 +22,13 @@ public class Solution {
                 max = el.get(1) + er.get(1);
             }
             for (int i = r; i >= 0; --i) {
-                List<Integer> next = b.get(i);
-                if (el.get(1) + next.get(1) == max) {
-                    List<Integer> e = new ArrayList<>();
-                    e.add(el.get(0));
-                    e.add(next.get(0));
-                    result.add(e);
-                }
+                List<Integer> cur = b.get(i);
+                if (el.get(1) + cur.get(1) != max) break;
+
+                List<Integer> e = new ArrayList<>();
+                e.add(el.get(0));
+                e.add(cur.get(0));
+                result.add(e);
             }
             ++l;
         }
