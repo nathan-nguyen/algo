@@ -6,16 +6,21 @@ public class Solution {
 
     public static void main(String[] args) {
         Solution solution = new Solution();
-        System.out.println(solution.solve());
+        solution.solve();
     }
 
-    private boolean solve() {
+    private void solve() {
         int[] a = new int[MAX_SIZE];
         for (int i = 0; i < MAX_SIZE; ++i) a[i] = random.nextInt(MAX_SIZE);
         int[] b = Arrays.copyOfRange(a, 0, MAX_SIZE);
         Arrays.sort(b);
-        sort(a);
-        for (int i = 0; i < MAX_SIZE; ++i) {
+        solve(a, b);
+    }
+
+    private boolean compare(int[] a, int b[]) {
+        if (a.length != b.length) return false;
+
+        for (int i = 0; i < a.length; ++i) {
             if (a[i] != b[i]) return false;
         }
         return true;
@@ -40,31 +45,83 @@ public class Solution {
      * 5. Merge Sort
      * 6. Heap Sort
      */
-    private void sort(int[] a) {
+    private void solve(int[] a, int[] sortedResult) {
         int[] a1 = Arrays.copyOfRange(a, 0, MAX_SIZE);
         long t1 = System.currentTimeMillis();
         insertionSort(a1);
-        System.out.println("Insertion Sort: " + (System.currentTimeMillis() - t1));
+        System.out.println("Insertion Sort: " + (System.currentTimeMillis() - t1) + " - " + compare(a1, sortedResult));
 
         int[] a2 = Arrays.copyOfRange(a, 0, MAX_SIZE);
         long t2 = System.currentTimeMillis();
         selectionSort(a2);
-        System.out.println("Selection Sort: " + (System.currentTimeMillis() - t2));
+        System.out.println("Selection Sort: " + (System.currentTimeMillis() - t2) + " - " + compare(a2, sortedResult));
 
         int[] a3 = Arrays.copyOfRange(a, 0, MAX_SIZE);
         long t3 = System.currentTimeMillis();
         bubbleSort(a3);
-        System.out.println("Bubble Sort: " + (System.currentTimeMillis() - t3));
+        System.out.println("Bubble Sort: " + (System.currentTimeMillis() - t3) + " - " + compare(a3, sortedResult));
 
         int[] a4 = Arrays.copyOfRange(a, 0, MAX_SIZE);
         long t4 = System.currentTimeMillis();
         quickSort(a4, 0, MAX_SIZE - 1);
-        System.out.println("Quick Sort: " + (System.currentTimeMillis() - t4));
+        System.out.println("Quick Sort: " + (System.currentTimeMillis() - t4) + " - " + compare(a4, sortedResult));
 
         int[] a5 = Arrays.copyOfRange(a, 0, MAX_SIZE);
         long t5 = System.currentTimeMillis();
         mergeSort(a5, 0, MAX_SIZE - 1);
-        System.out.println("Merge Sort: " + (System.currentTimeMillis() - t5));
+        System.out.println("Merge Sort: " + (System.currentTimeMillis() - t5) + " - " + compare(a5, sortedResult));
+
+        int[] a6 = Arrays.copyOfRange(a, 0, MAX_SIZE);
+        long t6 = System.currentTimeMillis();
+        heapSort(a6);
+        System.out.println("Heap Sort: " + (System.currentTimeMillis() - t6) + " - " + compare(a6, sortedResult));
+    }
+
+    private void heapSort(int[] a) {
+        Heap heap = new Heap(a.length);
+        for (int e: a) heap.add(e);
+        for (int i = 0; i < a.length; ++i) a[i] = heap.poll();
+    }
+
+    class Heap {
+        int[] heap;
+        int size = 0;
+
+        Heap(int maxSize) {
+            this.heap = new int[maxSize + 1];
+        }
+
+        void add(int e) {
+            heap[++size] = e;
+            int index = size;
+            for (int i = size; i > 1; i /= 2) {
+                if (heap[i/2] <= heap[i]) return;
+                swap(heap, i, i/2);
+            }
+        }
+
+        void correctHeap(int index) {
+            int left = index * 2 > size ? Integer.MAX_VALUE : heap[index * 2];
+            int right = index * 2 + 1 > size ? Integer.MAX_VALUE : heap[index * 2 + 1];
+
+            if (heap[index] <= left && heap[index] <= right) return;
+
+            if (left <= right) {
+                swap(heap, index, index * 2);
+                correctHeap(index * 2);
+            }
+            else {
+                swap(heap, index, index * 2 + 1);
+                correctHeap(index * 2 + 1);
+            }
+        }
+
+        private int poll() {
+            int result = heap[1];
+            heap[1] = heap[size--];
+            correctHeap(1);
+            return result;
+        }
     }
 
     private void mergeSort(int[] a, int s, int e) {
